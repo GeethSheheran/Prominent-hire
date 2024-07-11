@@ -58,17 +58,28 @@ const FooterContent = styled.div`
   align-items: flex-start;
   width: 100%;
   max-width: 1200px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const LogoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
 `;
 
 const LogoImage = styled.img`
   height: 150px;
-  margin:30px 50px;
+  margin: 30px 50px;
 `;
 
 const LogoText = styled.div`
@@ -78,6 +89,12 @@ const LogoText = styled.div`
 
 const ContactInformation = styled.div`
   text-align: left;
+  margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    margin-bottom: 30px;
+  }
 `;
 
 const ContactTitle = styled.h3`
@@ -104,6 +121,10 @@ const SocialIcons = styled.div`
   display: flex;
   justify-content: left;
   gap: 10px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const SocialLink = styled.a`
@@ -118,6 +139,12 @@ const SocialLink = styled.a`
 
 const Pages = styled.div`
   text-align: left;
+  margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    margin-bottom: 30px;
+  }
 `;
 
 const PagesTitle = styled.h3`

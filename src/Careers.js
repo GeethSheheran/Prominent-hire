@@ -31,11 +31,22 @@ const CareersContainer = styled.div`
   padding: 60px 20px;
   background-color: #031b30;
   color: white;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
 `;
 
 const TextContainer = styled.div`
   max-width: 600px;
   margin-right: 40px;
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 `;
 
 const Title = styled.h1`
@@ -66,10 +77,15 @@ const Button = styled.button`
 
 const VideoContainer = styled.div`
   flex-shrink: 0;
+  max-width: 100%;
 `;
 
 const Video = styled.img`
   max-width: 40vw;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    max-width: 80vw;
+  }
 `;

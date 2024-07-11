@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import LogoImageSrc from './mainLogo.png'; // Ensure this path is correct
 
 const Nav = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <Navbar>
       <Logo>
         <LogoImage src={LogoImageSrc} alt="Logo" />
-        </Logo>
-      <NavMenu>
+        
+      </Logo>
+      <Hamburger onClick={toggleMenu}>
+        {isOpen ? <FaTimes /> : <FaBars />}
+      </Hamburger>
+      <NavMenu isOpen={isOpen}>
         <NavItem>Home</NavItem>
         <NavItem>Industries</NavItem>
         <NavItem>Services</NavItem>
@@ -17,8 +28,6 @@ const Nav = () => {
         <NavItem>Contact us</NavItem>
       </NavMenu>
       <NavButtons>
-        {/* <LanguageSelector>ENG</LanguageSelector> */}
-        {/* <Phone>+94 76 123 4567</Phone> */}
         <NavButton>Find a Job</NavButton>
         <NavButton1>Hire Talent</NavButton1>
       </NavButtons>
@@ -53,6 +62,18 @@ const NavMenu = styled.ul`
   display: flex;
   margin: 0;
   padding: 0;
+  transition: transform 0.3s ease-in-out;
+
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #031B30;
+    flex-direction: column;
+    align-items: center;
+    transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(-100vh)')};
+  }
 `;
 
 const NavItem = styled.li`
@@ -63,11 +84,19 @@ const NavItem = styled.li`
   &:hover {
     color: #FFD700;
   }
+
+  @media (max-width: 768px) {
+    margin: 20px 0;
+  }
 `;
 
 const NavButtons = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const NavButton = styled.button`
@@ -99,6 +128,17 @@ const NavButton1 = styled.button`
   &:hover {
     background-color: #FF0069;
     color: white;
+  }
+`;
+
+const Hamburger = styled.div`
+  display: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: white;
+
+  @media (max-width: 768px) {
+    display: block;
   }
 `;
 

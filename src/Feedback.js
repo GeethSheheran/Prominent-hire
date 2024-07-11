@@ -35,15 +35,17 @@ const Feedback = () => {
 
   const next = () => {
     setDirection('next');
-    setCurrentIndex((prevIndex) => (prevIndex + 2) % testimonials.length);
+    setCurrentIndex((prevIndex) => (prevIndex + (window.innerWidth <= 768 ? 1 : 2)) % testimonials.length);
   };
 
   const prev = () => {
     setDirection('prev');
-    setCurrentIndex((prevIndex) => (prevIndex - 2 + testimonials.length) % testimonials.length);
+    setCurrentIndex((prevIndex) => (prevIndex - (window.innerWidth <= 768 ? 1 : 2) + testimonials.length) % testimonials.length);
   };
 
-  const visibleTestimonials = testimonials.slice(currentIndex, currentIndex + 2);
+  const visibleTestimonials = window.innerWidth <= 768 
+    ? testimonials.slice(currentIndex, currentIndex + 1) 
+    : testimonials.slice(currentIndex, currentIndex + 2);
 
   return (
     <FeedbackContainer>
@@ -97,6 +99,11 @@ const FeedbackContainer = styled.div`
   height: 80vh; /* Full viewport height to center vertically */
   background-color: #f9f9f9;
   text-align: center;
+
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 20px;
+  }
 `;
 
 const Content = styled.div`
@@ -117,7 +124,7 @@ const TestimonialsContainer = styled.div`
   align-items: center;
   overflow: hidden;
   position: relative;
-  width: 100;
+  width: 100%;
 `;
 
 const TestimonialWrapper = styled.div`
@@ -141,6 +148,10 @@ const TestimonialCard = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 300px;
   text-align: left;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 const UserInfo = styled.div`
