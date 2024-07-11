@@ -59,7 +59,12 @@ const IndustryContainer = styled.div`
   gap: 20px;
   padding: 20px;
   background-color: #f9f9f9;
-  margin:100px;
+  margin: 100px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 `;
 
 const Card = styled.div`
