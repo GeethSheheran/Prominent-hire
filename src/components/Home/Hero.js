@@ -49,7 +49,7 @@ const HeroDescription = styled.p`
   font-size: 1rem;
   margin-top:-50px;
   @media (max-width: 768px) {
-    font-size: 0.5rem;
+    font-size: 1rem;
     margin-top:0px;
   }
 `;
