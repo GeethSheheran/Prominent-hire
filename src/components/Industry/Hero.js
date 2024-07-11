@@ -5,9 +5,9 @@ const Hero = () => {
   return (
     <HeroContainer>
       <HeroContent>
-        <HeroTitle>With You on Your Journey to Success</HeroTitle>
+        <HeroTitle>Industries We Serve</HeroTitle>
         <HeroDescription>
-        Partnering with Top Talent and Leading Companies to Create a Future of Excellence Together.
+        we pride ourselves on our extensive industry expertise and our ability to connect top talent with leading companies across a wide range of sectors. Our dedicated team of recruiters has a deep understanding of the unique challenges and opportunities within each industry, ensuring that we find the perfect fit for both candidates and employers. Explore the industries we serve
         </HeroDescription>
       </HeroContent>
     </HeroContainer>
@@ -18,7 +18,7 @@ export default Hero;
 
 const HeroContainer = styled.div`
   height: 70vh;
-  background-image: url('./hero.png');
+  background-image: url('./hero2.png');
   background-size: cover;
   background-position: center;
   display: flex;

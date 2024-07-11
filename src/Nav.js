@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { Link, useLocation } from 'react-router-dom';
 import LogoImageSrc from './mainLogo.png'; // Ensure this path is correct
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -14,18 +16,41 @@ const Nav = () => {
     <Navbar>
       <Logo>
         <LogoImage src={LogoImageSrc} alt="Logo" />
-        
       </Logo>
       <Hamburger onClick={toggleMenu}>
         {isOpen ? <FaTimes /> : <FaBars />}
       </Hamburger>
       <NavMenu isOpen={isOpen}>
-        <NavItem>Home</NavItem>
-        <NavItem>Industries</NavItem>
-        <NavItem>Services</NavItem>
-        <NavItem>Blogs</NavItem>
-        <NavItem>About us</NavItem>
-        <NavItem>Contact us</NavItem>
+        <NavItem>
+          <StyledLink to="/" isActive={location.pathname === '/'}>
+            Home
+          </StyledLink>
+        </NavItem>
+        <NavItem>
+          <StyledLink to="/industries" isActive={location.pathname === '/industries'}>
+            Industries
+          </StyledLink>
+        </NavItem>
+        <NavItem>
+          <StyledLink to="/services" isActive={location.pathname === '/services'}>
+            Services
+          </StyledLink>
+        </NavItem>
+        <NavItem>
+          <StyledLink to="/blogs" isActive={location.pathname === '/blogs'}>
+            Blogs
+          </StyledLink>
+        </NavItem>
+        <NavItem>
+          <StyledLink to="/about-us" isActive={location.pathname === '/about-us'}>
+            About Us
+          </StyledLink>
+        </NavItem>
+        <NavItem>
+          <StyledLink to="/contact-us" isActive={location.pathname === '/contact-us'}>
+            Contact Us
+          </StyledLink>
+        </NavItem>
       </NavMenu>
       <NavButtons>
         <NavButton>Find a Job</NavButton>
@@ -54,7 +79,7 @@ const Logo = styled.div`
   align-items: center;
   font-size: 1.5rem;
   color: white;
-  margin-left:50px;
+  margin-left: 50px;
 `;
 
 const LogoImage = styled.img`
@@ -86,24 +111,26 @@ const NavItem = styled.li`
   color: white;
   cursor: pointer;
 
-  &:hover {
-    color: #FFD700;
-  }
-
   @media (max-width: 768px) {
     margin: 20px 0;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${({ isActive }) => (isActive ? '#FFD700' : 'white')};
+  &:hover {
+    color: #FFD700;
   }
 `;
 
 const NavButtons = styled.div`
   display: flex;
   align-items: center;
-  margin-right:50px;
-
+  margin-right: 50px;
 
   @media (max-width: 768px) {
     display: none;
-    
   }
 `;
 
@@ -147,20 +174,6 @@ const Hamburger = styled.div`
 
   @media (max-width: 768px) {
     display: block;
-    margin-right:50px;
+    margin-right: 50px;
   }
-`;
-
-const LanguageSelector = styled.div`
-  margin-right: 20px;
-  color: white;
-  display: flex;
-  align-items: center;
-`;
-
-const Phone = styled.div`
-  color: white;
-  margin-right: 20px;
-  display: flex;
-  align-items: center;
 `;
