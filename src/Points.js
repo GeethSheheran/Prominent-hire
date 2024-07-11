@@ -9,27 +9,27 @@ const Points = () => {
   const cardData = [
     {
       icon: IndustryIcon,
-      title: 'Industry',
-      description: 'Information about various industries.',
-      buttonLabel: 'Learn More'
+      title: 'Industry Expertise',
+      description: 'Supportive advice and resources to navigate career decisions and opportunities',
+      buttonLabel: 'Get Career Advice'
     },
     {
       icon: CareerIcon,
       title: 'Career Guidance',
-      description: 'Guidance for your career path.',
-      buttonLabel: 'Explore'
+      description: 'Supportive advice and resources to navigate career decisions and opportunities',
+      buttonLabel: 'Get Career Advice'
     },
     {
       icon: SupportIcon,
-      title: 'Support',
-      description: 'We are here to support you.',
-      buttonLabel: 'Get Help'
+      title: 'Continuous Support',
+      description: 'Ongoing assistance throughout the job search and beyond, ensuring long-term success',
+      buttonLabel: 'Access Ongoing Support'
     },
     {
       icon: TechnologyIcon,
-      title: 'Technology',
-      description: 'Latest technology trends.',
-      buttonLabel: 'Discover'
+      title: 'Innovative Technology',
+      description: 'Leveraging cutting-edge tools to streamline the recruitment process for both candidates and companies',
+      buttonLabel: 'Experience Technology'
     },
   ];
 
@@ -75,13 +75,13 @@ const Icon = styled.img`
 `;
 
 const Title = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 10px;
   color: #fff;
 `;
 
 const Description = styled.p`
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #fff;
   margin-bottom: 20px;
 `;
