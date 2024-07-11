@@ -55,7 +55,7 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 30px;
   line-height: 1.5;
 `;

@@ -34,14 +34,14 @@ const HeroContent = styled.div`
   padding: 0px;
 //   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  margin-top:-50px;
+  // margin-top:-50px;
 `;
 
 const HeroTitle = styled.h1`
   font-size: 3rem;
-  margin-bottom: 20px;
 `;
 
 const HeroDescription = styled.p`
   font-size: 1.5rem;
+  margin-top:-50px;
 `;
