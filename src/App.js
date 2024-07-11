@@ -8,6 +8,7 @@ import Careers from './Careers';
 import Feedback from './Feedback';
 import Service from './Service';
 import Footer from './Footer';
+import './App.css';
 
 const App = () => {
   return (
