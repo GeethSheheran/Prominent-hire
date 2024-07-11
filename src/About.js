@@ -79,7 +79,7 @@ const Button = styled.button`
 `;
 
 const Image = styled.img`
-  max-width: 100vw;
+  max-width: 100%;
   height: auto;
 //   border-radius: 10px;
 `;
