@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import UserImage from './video.png'; // Ensure this path is correct
 
@@ -32,20 +32,31 @@ const Feedback = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState('');
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const next = () => {
     setDirection('next');
-    setCurrentIndex((prevIndex) => (prevIndex + (window.innerWidth <= 768 ? 1 : 2)) % testimonials.length);
+    setCurrentIndex((prevIndex) => (prevIndex + (isMobile ? 1 : 2)) % testimonials.length);
   };
 
   const prev = () => {
     setDirection('prev');
-    setCurrentIndex((prevIndex) => (prevIndex - (window.innerWidth <= 768 ? 1 : 2) + testimonials.length) % testimonials.length);
+    setCurrentIndex((prevIndex) => (prevIndex - (isMobile ? 1 : 2) + testimonials.length) % testimonials.length);
   };
 
-  const visibleTestimonials = window.innerWidth <= 768 
-    ? testimonials.slice(currentIndex, currentIndex + 1) 
-    : testimonials.slice(currentIndex, currentIndex + 2);
+  const visibleTestimonials = testimonials.slice(currentIndex, currentIndex + (isMobile ? 1 : 2));
 
   return (
     <FeedbackContainer>
@@ -122,6 +133,7 @@ const Title = styled.h1`
 const TestimonialsContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center; /* Centering the container horizontally */
   overflow: hidden;
   position: relative;
   width: 100%;
