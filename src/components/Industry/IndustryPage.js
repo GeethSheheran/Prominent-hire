@@ -58,7 +58,7 @@ const IndustryContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
-  background-color: #f9f9f9;
+  // background-color: #f9f9f9;
   margin: 100px;
 
   @media (max-width: 768px) {
