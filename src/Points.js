@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import IndustryIcon from './icon (2).png';
+import IndustryIcon from './icon (1).png';
 import CareerIcon from './icon (2).png';
 import SupportIcon from './icon (3).png';
 import TechnologyIcon from './icon (4).png';
