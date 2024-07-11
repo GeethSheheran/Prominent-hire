@@ -16,7 +16,7 @@ const About = () => {
       <Image src={AboutImage} alt="About Us" />
       <ExtraTextContainer>
         <ExtraText>
-        Partnering with our agency provides you with the advantages of a trusted reputation and proven track record, an innovative and forward-thinking approach to recruitment, and a commitment to personalized, ethical service tailored to your unique needs.
+          Partnering with our agency provides you with the advantages of a trusted reputation and proven track record, an innovative and forward-thinking approach to recruitment, and a commitment to personalized, ethical service tailored to your unique needs.
         </ExtraText>
       </ExtraTextContainer>
     </AboutContainer>
@@ -100,4 +100,8 @@ const ExtraText = styled.p`
   line-height: 1.5;
   text-align: center;
   padding: 20px;
+  @media (max-width: 768px){
+  font-size: 1rem;
+  margin:0 50px;
+  }
 `;

@@ -38,11 +38,15 @@ const Nav = () => {
 export default Nav;
 
 const Navbar = styled.nav`
+  position: fixed;
+  top: 0;
+  width: 100%;
   background-color: #031B30;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
+  z-index: 1000; /* Ensure the navbar is on top */
 `;
 
 const Logo = styled.div`
@@ -50,6 +54,7 @@ const Logo = styled.div`
   align-items: center;
   font-size: 1.5rem;
   color: white;
+  margin-left:50px;
 `;
 
 const LogoImage = styled.img`
@@ -93,9 +98,12 @@ const NavItem = styled.li`
 const NavButtons = styled.div`
   display: flex;
   align-items: center;
+  margin-right:50px;
+
 
   @media (max-width: 768px) {
     display: none;
+    
   }
 `;
 
@@ -139,6 +147,7 @@ const Hamburger = styled.div`
 
   @media (max-width: 768px) {
     display: block;
+    margin-right:50px;
   }
 `;
 

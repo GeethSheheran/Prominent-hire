@@ -16,3 +16,7 @@ p{
   font-style: normal;
   line-height: 1.5;
 }
+
+body{
+  width:100vw;
+}

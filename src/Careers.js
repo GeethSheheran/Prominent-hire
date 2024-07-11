@@ -52,12 +52,24 @@ const TextContainer = styled.div`
 const Title = styled.h1`
   font-size: 2rem;
   margin-bottom: 20px;
+  @media (max-width: 768px){
+  margin:0 50px;
+  font-size: 1.5rem;
+  line-height:1.2;
+  margin-bottom:20px;
+  }
 `;
 
 const Description = styled.p`
   font-size: 1rem;
   margin-bottom: 30px;
   line-height: 1.5;
+  @media (max-width: 768px){
+  font-size: 1rem;
+  margin:0 50px;
+  margin-bottom:20px;
+
+  }
 `;
 
 const Button = styled.button`
