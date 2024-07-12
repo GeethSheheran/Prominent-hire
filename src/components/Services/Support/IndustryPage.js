@@ -1,37 +1,23 @@
 // src/pages/Industry/Industry.js
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const IndustryPage = () => {
   const industries = [
     {
-      title: 'Career Advancement Services',
-      description: 'Our recruiters understand the complexities of the manufacturing sector, placing skilled workers who enhance productivity and quality.',
-      path: '/careers'
+      title: 'Education',
+      description: 'We connect passionate educators and administrators with institutions that shape the minds of the future.'
     },
     {
-      title: 'Recruitment Solutions',
-      description: 'We connect passionate educators and administrators with institutions that shape the minds of the future.',
-      path: '/recruitment'
-    },
-    {
-      title: 'Support and Transition',
-      description: 'In the dynamic world of retail and e-commerce, we find talent that drives sales, enhances customer experience, and innovates digital platforms.',
-      path: '/support'
+      title: 'Retail and E-commerce',
+      description: 'In the dynamic world of retail and e-commerce, we find talent that drives sales, enhances customer experience, and innovates digital platforms.'
     }
   ];
-
-  const navigate = useNavigate();
-
-  const handleCardClick = (path) => {
-    navigate(path);
-  };
 
   return (
     <IndustryContainer>
       {industries.map((industry, index) => (
-        <Card key={index} onClick={() => handleCardClick(industry.path)}>
+        <Card key={index}>
           <CardIcon>$</CardIcon>
           <CardTitle>{industry.title}</CardTitle>
           <CardDescription>{industry.description}</CardDescription>
@@ -48,11 +34,12 @@ const IndustryContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
+  // background-color: #f9f9f9;
   margin: 100px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    margin: 20px;
+  margin: 20px;
     justify-items: center;
   }
 `;
@@ -65,7 +52,6 @@ const Card = styled.div`
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, background-color 0.2s;
-  cursor: pointer;
 
   &:hover {
     transform: translateY(-5px);
