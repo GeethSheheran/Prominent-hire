@@ -2,12 +2,14 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const ScrollToTop = () => {
+const ScrollToTop = ({ isModalOpen }) => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (!isModalOpen) {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, isModalOpen]);
 
   return null;
 };
