@@ -107,7 +107,7 @@ const NavMenu = styled.ul`
     background-color: #031B30;
     flex-direction: column;
     align-items: center;
-    transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(-100vh)')};
+    transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(100vh)')};
     transition: transform 0.3s ease-in-out;
     padding-top: 20px;
   }
