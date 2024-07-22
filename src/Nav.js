@@ -75,7 +75,7 @@ const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  padding: 15px 5%;
   z-index: 1000; /* Ensure the navbar is on top */
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 `;
@@ -111,7 +111,7 @@ const NavMenu = styled.ul`
     transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')};
     transition: transform 0.3s ease-in-out;
     z-index: 999; /* Ensure the menu is above other content */
-    padding: 50px 50px; /* Add 10px left and right padding */
+    padding: 20px 10px; /* Add 10px left and right padding */
   }
 `;
 
@@ -182,15 +182,13 @@ const Hamburger = styled.div`
 
   @media (max-width: 768px) {
     display: block;
-    op: 20px;
-  right: 400px;
   }
 `;
 
 const CloseButton = styled.div`
   position: absolute;
   top: 20px;
-  right: 400px;
+  right: 5%;
   font-size: 2rem;
   cursor: pointer;
   color: white;
