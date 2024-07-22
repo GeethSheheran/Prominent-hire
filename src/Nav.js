@@ -179,7 +179,6 @@ const Hamburger = styled.div`
   cursor: pointer;
   font-size: 2rem;
   color: white;
-  padding-left:5%;
 
   @media (max-width: 768px) {
     display: block;
