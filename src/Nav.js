@@ -12,6 +12,10 @@ const Nav = () => {
     setIsOpen(!isOpen);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <Navbar>
       <Logo>
@@ -19,32 +23,32 @@ const Nav = () => {
       </Logo>
       <NavMenu isOpen={isOpen}>
         <NavItem>
-          <StyledLink to="/" isActive={location.pathname === '/'}>
+          <StyledLink to="/" isActive={location.pathname === '/'} onClick={closeMenu}>
             Home
           </StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/industries" isActive={location.pathname === '/industries'}>
+          <StyledLink to="/industries" isActive={location.pathname === '/industries'} onClick={closeMenu}>
             Industries
           </StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/services" isActive={location.pathname === '/services'}>
+          <StyledLink to="/services" isActive={location.pathname === '/services'} onClick={closeMenu}>
             Services
           </StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/blogs" isActive={location.pathname === '/blogs'}>
+          <StyledLink to="/blogs" isActive={location.pathname === '/blogs'} onClick={closeMenu}>
             Blogs
           </StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/about" isActive={location.pathname === '/about'}>
+          <StyledLink to="/about" isActive={location.pathname === '/about'} onClick={closeMenu}>
             About Us
           </StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/contact" isActive={location.pathname === '/contact'}>
+          <StyledLink to="/contact" isActive={location.pathname === '/contact'} onClick={closeMenu}>
             Contact Us
           </StyledLink>
         </NavItem>
@@ -92,6 +96,7 @@ const NavMenu = styled.ul`
   list-style: none;
   display: flex;
   padding: 0;
+  margin: 0;
   margin-left: -300px; /* Adjust this margin as needed */
 
   @media (max-width: 768px) {
@@ -104,6 +109,7 @@ const NavMenu = styled.ul`
     align-items: center;
     transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(-100vh)')};
     transition: transform 0.3s ease-in-out;
+    padding-top: 20px;
   }
 `;
 

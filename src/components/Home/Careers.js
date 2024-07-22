@@ -41,10 +41,10 @@ const CareersContainer = styled.div`
 
 const TextContainer = styled.div`
   max-width: 600px;
-  margin-right: 40px;
+  padding-right: 40px;
 
   @media (max-width: 768px) {
-    margin-right: 0;
+    padding-right: 0;
     margin-bottom: 20px;
   }
 `;
@@ -53,7 +53,7 @@ const Title = styled.h1`
   font-size: 2rem;
   margin-bottom: 20px;
   @media (max-width: 768px){
-  margin:0 50px;
+  padding:0 50px;
   font-size: 1.5rem;
   line-height:1.2;
   margin-bottom:20px;
