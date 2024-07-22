@@ -22,6 +22,7 @@ const Nav = () => {
         <LogoImage src={LogoImageSrc} alt="Logo" />
       </Logo>
       <NavMenu isOpen={isOpen}>
+        <CloseButton onClick={closeMenu}><FaTimes /></CloseButton>
         <NavItem>
           <StyledLink to="/" isActive={location.pathname === '/'} onClick={closeMenu}>
             Home
@@ -110,6 +111,7 @@ const NavMenu = styled.ul`
     transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')};
     transition: transform 0.3s ease-in-out;
     z-index: 999; /* Ensure the menu is above other content */
+    padding: 20px 10px; /* Add 10px left and right padding */
   }
 `;
 
@@ -181,4 +183,13 @@ const Hamburger = styled.div`
   @media (max-width: 768px) {
     display: block;
   }
+`;
+
+const CloseButton = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
 `;
