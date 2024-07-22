@@ -44,7 +44,7 @@ const Nav = () => {
           </StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/contact-us" isActive={location.pathname === '/contact-us'}>
+          <StyledLink to="/contact" isActive={location.pathname === '/contact'}>
             Contact Us
           </StyledLink>
         </NavItem>

@@ -6,6 +6,7 @@ import Nav from './Nav';
 import Home from './pages/Home/Home';
 import Industry from './pages/Industry/Industry';
 import Services from './pages/Services/Services';
+import Contact from './pages/Contact/Contact';
 import Blogs from './pages/Blog/Blog';
 import CareersPage from './components/Services/Careers/CareersPage';
 import Recruitment from './components/Services/Recruitment/Recruitment';
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/recruitment" element={<Recruitment />} />
         <Route path="/support" element={<Support />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         {/* Add other routes here */}
       </Routes>
     </Router>
