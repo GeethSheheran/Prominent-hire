@@ -183,14 +183,14 @@ const Hamburger = styled.div`
   @media (max-width: 768px) {
     display: block;
     op: 20px;
-  right: 0px;
+  right: 400px;
   }
 `;
 
 const CloseButton = styled.div`
   position: absolute;
   top: 20px;
-  right: 0px;
+  right: 400px;
   font-size: 2rem;
   cursor: pointer;
   color: white;
