@@ -30,7 +30,6 @@ const AboutContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 60px 20px;
-  background-color: #f9f9f9;
   text-align: center;
 `;
 
@@ -54,9 +53,9 @@ const DescriptionContainer = styled.div`
 `;
 
 const Description = styled.p`
-  font-size: 1.2rem;
+  font-size: 16px;
   color: #031b30;
-  max-width: 600px;
+  max-width: 650px;
   margin-bottom: 0;
   line-height: 1.5;
 `;
@@ -94,12 +93,12 @@ const ExtraTextContainer = styled.div`
 `;
 
 const ExtraText = styled.p`
-  font-size: 1.2rem;
+  font-size: 16px;
   color: #fff;
   max-width: 800px;
   line-height: 1.5;
   text-align: center;
-  padding: 20px;
+  padding: 0px;
   @media (max-width: 768px){
   font-size: 1rem;
   margin:0 50px;

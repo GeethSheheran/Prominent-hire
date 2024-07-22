@@ -18,7 +18,7 @@ export default Hero;
 
 const HeroContainer = styled.div`
   height: 70vh;
-  background-image: url('./hero.png');
+  background-image: url('./hero2.png');
   background-size: cover;
   background-position: center;
   display: flex;

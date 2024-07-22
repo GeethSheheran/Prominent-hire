@@ -1,0 +1,40 @@
+import React from 'react';
+import styled from 'styled-components';
+
+const Aboutus = () => {
+    return (
+        <AboutContainer>
+            <Header>About Us</Header>
+            <Paragraph>
+                Welcome to our company! We are committed to delivering the best services and solutions to our clients. Our team of professionals works tirelessly to ensure customer satisfaction and success in every project we undertake. Thank you for choosing us.
+            </Paragraph>
+        </AboutContainer>
+    );
+};
+
+export default Aboutus;
+
+const AboutContainer = styled.div`
+  padding: 20px;
+  margin: 100px;
+`;
+
+const Header = styled.h1`
+  font-family: Outfit;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    text-align:center;
+    color: var(--Base, #00283C);
+    line-height: normal;
+`;
+
+const Paragraph = styled.p`
+  color: var(--Base, #00283C);
+    text-align: center;
+
+font-family: Outfit;
+font-size: 16px;
+font-style: normal;
+line-height: normal;
+`;

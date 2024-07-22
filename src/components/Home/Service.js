@@ -28,7 +28,7 @@ const ServiceContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 60px 20px;
-  background-color: #031b30;
+  background-color: #D6D6D6;
   color: white;
   text-align: center;
   padding-bottom:100px;
@@ -36,7 +36,7 @@ const ServiceContainer = styled.div`
 
 const Title = styled.h1`
   font-size: 2rem;
-  color: white;
+  color: #00283C;
   margin-bottom: 40px;
 `;
 
@@ -45,11 +45,12 @@ const LocationList = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   max-width: 1200px;
+  text-align:left;
 `;
 
 const LocationItem = styled.div`
   flex: 1 1 200px; /* Adjust the basis to control the number of columns */
   margin: 10px 20px;
   font-size: 1rem;
-  color: white;
+  color: #00283C;
 `;

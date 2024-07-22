@@ -7,7 +7,7 @@ const Hero = () => {
       <HeroContent>
         <HeroTitle> Our Services</HeroTitle>
         <HeroDescription>
-        we offer a range of comprehensive services designed to support both candidates and employers in achieving their goals.
+          we offer a range of comprehensive services designed to support both candidates and employers in achieving their goals.
         </HeroDescription>
       </HeroContent>
     </HeroContainer>
@@ -34,7 +34,6 @@ const HeroContent = styled.div`
   padding: 0px;
 //   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  // margin-top:-50px;
 `;
 
 const HeroTitle = styled.h1`
@@ -47,7 +46,6 @@ const HeroTitle = styled.h1`
 
 const HeroDescription = styled.p`
   font-size: 1rem;
-  margin-top:-50px;
   @media (max-width: 768px) {
     font-size: 1rem;
     margin-top:0px;

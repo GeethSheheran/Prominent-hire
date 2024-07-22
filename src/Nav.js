@@ -17,9 +17,6 @@ const Nav = () => {
       <Logo>
         <LogoImage src={LogoImageSrc} alt="Logo" />
       </Logo>
-      <Hamburger onClick={toggleMenu}>
-        {isOpen ? <FaTimes /> : <FaBars />}
-      </Hamburger>
       <NavMenu isOpen={isOpen}>
         <NavItem>
           <StyledLink to="/" isActive={location.pathname === '/'}>
@@ -42,7 +39,7 @@ const Nav = () => {
           </StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/about-us" isActive={location.pathname === '/about-us'}>
+          <StyledLink to="/about" isActive={location.pathname === '/about'}>
             About Us
           </StyledLink>
         </NavItem>
@@ -56,6 +53,9 @@ const Nav = () => {
         <NavButton>Find a Job</NavButton>
         <NavButton1>Hire Talent</NavButton1>
       </NavButtons>
+      <Hamburger onClick={toggleMenu}>
+        {isOpen ? <FaTimes /> : <FaBars />}
+      </Hamburger>
     </Navbar>
   );
 };
@@ -72,6 +72,7 @@ const Navbar = styled.nav`
   align-items: center;
   padding: 15px 20px;
   z-index: 1000; /* Ensure the navbar is on top */
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 `;
 
 const Logo = styled.div`
@@ -90,9 +91,8 @@ const LogoImage = styled.img`
 const NavMenu = styled.ul`
   list-style: none;
   display: flex;
-  margin: 0;
   padding: 0;
-  transition: transform 0.3s ease-in-out;
+  margin-left: -300px; /* Adjust this margin as needed */
 
   @media (max-width: 768px) {
     position: absolute;
@@ -103,6 +103,7 @@ const NavMenu = styled.ul`
     flex-direction: column;
     align-items: center;
     transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(-100vh)')};
+    transition: transform 0.3s ease-in-out;
   }
 `;
 

@@ -11,6 +11,7 @@ import CareersPage from './components/Services/Careers/CareersPage';
 import Recruitment from './components/Services/Recruitment/Recruitment';
 import Support from './components/Services/Support/Support';
 import './App.css';
+import About from './pages/About/About';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/careers" element={<CareersPage />} />
         <Route path="/recruitment" element={<Recruitment />} />
         <Route path="/support" element={<Support />} />
+        <Route path="/about" element={<About />} />
         {/* Add other routes here */}
       </Routes>
     </Router>

@@ -28,13 +28,13 @@ const IndustryContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 60px 20px;
-  background-color: #f9f9f9;
   text-align: center;
   margin-bottom:80px;
 `;
 
 const Title = styled.h1`
-  font-size: 2rem;
+  font-size: 32px;
+  font-weight: 400;
   color: #031b30;
   margin-bottom: 40px;
 `;
@@ -43,6 +43,7 @@ const IndustryList = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  text-align:left;
   max-width: 1200px;
 `;
 

@@ -89,7 +89,7 @@ const LogoText = styled.div`
 
 const ContactInformation = styled.div`
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 
   @media (max-width: 768px) {
     text-align: center;
@@ -105,7 +105,7 @@ const ContactTitle = styled.h3`
 const ContactLink = styled.a`
   color: white;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   text-decoration: none;
 
   &:hover {
@@ -114,7 +114,7 @@ const ContactLink = styled.a`
 `;
 
 const ContactText = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `;
 
 const SocialIcons = styled.div`
