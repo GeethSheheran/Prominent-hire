@@ -84,7 +84,6 @@ const Logo = styled.div`
   align-items: center;
   font-size: 1.5rem;
   color: white;
-  margin-left: 50px;
 `;
 
 const LogoImage = styled.img`
@@ -97,19 +96,20 @@ const NavMenu = styled.ul`
   display: flex;
   padding: 0;
   margin: 0;
-  margin-left: -300px; /* Adjust this margin as needed */
 
   @media (max-width: 768px) {
-    position: absolute;
-    top: 60px;
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100%;
+    height: 100vh;
     background-color: #031B30;
     flex-direction: column;
     align-items: center;
-    transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(100vh)')};
+    justify-content: center;
+    transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')};
     transition: transform 0.3s ease-in-out;
-    padding-top: 20px;
+    z-index: 999; /* Ensure the menu is above other content */
   }
 `;
 
@@ -134,7 +134,6 @@ const StyledLink = styled(Link)`
 const NavButtons = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 50px;
 
   @media (max-width: 768px) {
     display: none;
@@ -181,6 +180,5 @@ const Hamburger = styled.div`
 
   @media (max-width: 768px) {
     display: block;
-    margin-right: 50px;
   }
 `;
