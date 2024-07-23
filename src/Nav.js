@@ -124,7 +124,6 @@ const NavMenu = styled.ul`
     transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')};
     transition: transform 0.3s ease-in-out;
     z-index: 999; /* Ensure the menu is above other content */
-    padding: 20px 10px; /* Add 10px left and right padding */
   }
 `;
 

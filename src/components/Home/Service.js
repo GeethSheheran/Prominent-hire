@@ -31,13 +31,22 @@ const ServiceContainer = styled.div`
   background-color: #D6D6D6;
   color: white;
   text-align: center;
-  padding-bottom:100px;
+  padding-bottom: 100px;
+
+  @media (max-width: 1024px) {
+    padding: 40px 10px;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 2rem;
   color: #00283C;
   margin-bottom: 40px;
+
+  @media (max-width: 1024px) {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
 `;
 
 const LocationList = styled.div`
@@ -45,7 +54,12 @@ const LocationList = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   max-width: 1200px;
-  text-align:left;
+  text-align: center;
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+    text-align: center;
+  }
 `;
 
 const LocationItem = styled.div`
@@ -53,4 +67,10 @@ const LocationItem = styled.div`
   margin: 10px 20px;
   font-size: 1rem;
   color: #00283C;
+
+  @media (max-width: 1024px) {
+    flex: 1 1 100%;
+    margin: 5px 10px;
+    font-size: 0.9rem;
+  }
 `;

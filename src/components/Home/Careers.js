@@ -33,7 +33,7 @@ const CareersContainer = styled.div`
   color: white;
   flex-wrap: wrap;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
     text-align: center;
   }
@@ -43,7 +43,7 @@ const TextContainer = styled.div`
   max-width: 600px;
   padding-right: 40px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     padding-right: 0;
     margin-bottom: 20px;
   }
@@ -52,7 +52,7 @@ const TextContainer = styled.div`
 const Title = styled.h1`
   font-size: 2rem;
   margin-bottom: 20px;
-  @media (max-width: 768px){
+  @media (max-width: 1024px){
   padding:0 50px;
   font-size: 1.5rem;
   line-height:1.2;
@@ -64,7 +64,7 @@ const Description = styled.p`
   font-size: 1rem;
   margin-bottom: 30px;
   line-height: 1.5;
-  @media (max-width: 768px){
+  @media (max-width: 1024px){
   font-size: 1rem;
   margin:0 50px;
   margin-bottom:20px;
@@ -97,7 +97,7 @@ const Video = styled.img`
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     max-width: 80vw;
   }
 `;
