@@ -18,46 +18,52 @@ const Nav = () => {
 
   return (
     <Navbar>
-      <Logo>
-        <LogoImage src={LogoImageSrc} alt="Logo" />
-      </Logo>
-      <NavMenu isOpen={isOpen}>
-        <CloseButton onClick={closeMenu}><FaTimes /></CloseButton>
-        <NavItem>
-          <StyledLink to="/" isActive={location.pathname === '/'} onClick={closeMenu}>
-            Home
-          </StyledLink>
-        </NavItem>
-        <NavItem>
-          <StyledLink to="/industries" isActive={location.pathname === '/industries'} onClick={closeMenu}>
-            Industries
-          </StyledLink>
-        </NavItem>
-        <NavItem>
-          <StyledLink to="/services" isActive={location.pathname === '/services'} onClick={closeMenu}>
-            Services
-          </StyledLink>
-        </NavItem>
-        <NavItem>
-          <StyledLink to="/blogs" isActive={location.pathname === '/blogs'} onClick={closeMenu}>
-            Blogs
-          </StyledLink>
-        </NavItem>
-        <NavItem>
-          <StyledLink to="/about" isActive={location.pathname === '/about'} onClick={closeMenu}>
-            About Us
-          </StyledLink>
-        </NavItem>
-        <NavItem>
-          <StyledLink to="/contact" isActive={location.pathname === '/contact'} onClick={closeMenu}>
-            Contact Us
-          </StyledLink>
-        </NavItem>
-      </NavMenu>
-      <NavButtons>
+      <LeftSection>
+        <Logo>
+          <LogoImage src={LogoImageSrc} alt="Logo" />
+        </Logo>
+        <NavMenu isOpen={isOpen}>
+          <CloseButton onClick={closeMenu}><FaTimes /></CloseButton>
+          <NavItem>
+            <StyledLink to="/" isActive={location.pathname === '/'} onClick={closeMenu}>
+              Home
+            </StyledLink>
+          </NavItem>
+          <NavItem>
+            <StyledLink to="/industries" isActive={location.pathname === '/industries'} onClick={closeMenu}>
+              Industries
+            </StyledLink>
+          </NavItem>
+          <NavItem>
+            <StyledLink to="/services" isActive={location.pathname === '/services'} onClick={closeMenu}>
+              Services
+            </StyledLink>
+          </NavItem>
+          <NavItem>
+            <StyledLink to="/blogs" isActive={location.pathname === '/blogs'} onClick={closeMenu}>
+              Blogs
+            </StyledLink>
+          </NavItem>
+          <NavItem>
+            <StyledLink to="/about" isActive={location.pathname === '/about'} onClick={closeMenu}>
+              About Us
+            </StyledLink>
+          </NavItem>
+          <NavItem>
+            <StyledLink to="/contact" isActive={location.pathname === '/contact'} onClick={closeMenu}>
+              Contact Us
+            </StyledLink>
+          </NavItem>
+          <NavButtonsMobile>
+            <NavButton>Find a Job</NavButton>
+            <NavButton1>Hire Talent</NavButton1>
+          </NavButtonsMobile>
+        </NavMenu>
+      </LeftSection>
+      <NavButtonsDesktop>
         <NavButton>Find a Job</NavButton>
         <NavButton1>Hire Talent</NavButton1>
-      </NavButtons>
+      </NavButtonsDesktop>
       <Hamburger onClick={toggleMenu}>
         {isOpen ? <FaTimes /> : <FaBars />}
       </Hamburger>
@@ -80,6 +86,11 @@ const Navbar = styled.nav`
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 `;
 
+const LeftSection = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const Logo = styled.div`
   display: flex;
   align-items: center;
@@ -96,7 +107,9 @@ const NavMenu = styled.ul`
   list-style: none;
   display: flex;
   padding: 0;
-  margin-left: -200px;
+  margin-left: 10px;
+  justify-content: center;
+  width:100%;
 
   @media (max-width: 768px) {
     position: fixed;
@@ -133,13 +146,23 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const NavButtons = styled.div`
+const NavButtonsDesktop = styled.div`
   display: flex;
   align-items: center;
   margin-right:150px;
 
   @media (max-width: 768px) {
     display: none;
+  }
+`;
+
+const NavButtonsMobile = styled.div`
+  display: none;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    display: flex;
   }
 `;
 
@@ -157,6 +180,10 @@ const NavButton = styled.button`
     background-color: #fff;
     color: black;
   }
+
+  @media (max-width: 768px) {
+    margin: 10px 0;
+  }
 `;
 
 const NavButton1 = styled.button`
@@ -173,6 +200,10 @@ const NavButton1 = styled.button`
     background-color: #FF0069;
     color: white;
   }
+
+  @media (max-width: 768px) {
+    margin: 10px 0;
+  }
 `;
 
 const Hamburger = styled.div`
@@ -180,6 +211,7 @@ const Hamburger = styled.div`
   cursor: pointer;
   font-size: 2rem;
   color: white;
+  margin-right: 50px;
 
   @media (max-width: 768px) {
     display: block;
@@ -189,7 +221,7 @@ const Hamburger = styled.div`
 const CloseButton = styled.div`
   position: absolute;
   top: 20px;
-  right: 5%;
+  right: 50px;
   font-size: 2rem;
   cursor: pointer;
   color: white;

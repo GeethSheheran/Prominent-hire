@@ -4,6 +4,7 @@ import Hero from '../../components/Blog/Hero';
 import BlogCard from '../../components/Blog/BlogCard';
 import Service from '../../components/Home/Service';
 import Footer from '../../components/Home/Footer';
+import Recently from '../../components/Blog/Recently';
 
 const Blogs = () => {
   const blogCategories = [
@@ -24,6 +25,7 @@ const Blogs = () => {
           <BlogCard key={index} title={category} />
         ))}
       </BlogContainer>
+      <Recently/>
       <Service />
       <Footer />
     </div>
