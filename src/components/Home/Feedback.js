@@ -141,13 +141,13 @@ const TestimonialsContainer = styled.div`
 
 const TestimonialWrapper = styled.div`
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   ${({ direction }) => css`
     ${direction === 'next' && css`
-      animation: ${swipeLeft} 0.5s forwards;
+      animation: ${swipeLeft} 0.3s forwards;
     `}
     ${direction === 'prev' && css`
-      animation: ${swipeRight} 0.5s forwards;
+      animation: ${swipeRight} 0.3s forwards;
     `}
   `}
 `;
@@ -160,9 +160,14 @@ const TestimonialCard = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 300px;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px; /* Fixed height for all cards */
 
   @media (max-width: 768px) {
     width: 80%;
+    height: auto; /* Adjust height for mobile */
   }
 `;
 
@@ -192,6 +197,9 @@ const UserRating = styled.div`
 const UserDescription = styled.p`
   font-size: 1rem;
   color: #666;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
 `;
 
 const Arrow = styled.div`

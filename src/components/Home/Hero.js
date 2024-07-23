@@ -27,6 +27,8 @@ const HeroContainer = styled.div`
   color: white;
   text-align: center;
   background-color: #031B30;
+  @media (max-width: 768px) {
+    hight:50vh;
 `;
 
 const HeroContent = styled.div`

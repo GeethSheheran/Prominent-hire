@@ -109,13 +109,13 @@ const NavMenu = styled.ul`
   padding: 0;
   margin-left: 10px;
   justify-content: center;
-  width:100%;
+  width: 100%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: #031B30;
     flex-direction: column;
@@ -133,7 +133,7 @@ const NavItem = styled.li`
   color: white;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     margin: 20px 0;
   }
 `;
@@ -149,9 +149,9 @@ const StyledLink = styled(Link)`
 const NavButtonsDesktop = styled.div`
   display: flex;
   align-items: center;
-  margin-right:150px;
+  margin-right: 150px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `;
@@ -161,8 +161,9 @@ const NavButtonsMobile = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: flex;
+    margin-top: 20px;
   }
 `;
 
@@ -175,13 +176,14 @@ const NavButton = styled.button`
   margin-left: 10px;
   cursor: pointer;
   font-weight: bold;
+  margin-top: 10px;
 
   &:hover {
     background-color: #fff;
     color: black;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     margin: 10px 0;
   }
 `;
@@ -195,13 +197,14 @@ const NavButton1 = styled.button`
   margin-left: 10px;
   cursor: pointer;
   font-weight: bold;
+  margin-top: 10px;
 
   &:hover {
     background-color: #FF0069;
     color: white;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     margin: 10px 0;
   }
 `;
@@ -211,9 +214,9 @@ const Hamburger = styled.div`
   cursor: pointer;
   font-size: 2rem;
   color: white;
-  margin-right: 50px;
+  margin-right: 80px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: block;
   }
 `;
@@ -221,7 +224,7 @@ const Hamburger = styled.div`
 const CloseButton = styled.div`
   position: absolute;
   top: 20px;
-  right: 50px;
+  right: 80px;
   font-size: 2rem;
   cursor: pointer;
   color: white;

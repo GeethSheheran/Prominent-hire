@@ -1,4 +1,3 @@
-// src/pages/Industry/Form.js
 import React from 'react';
 import styled from 'styled-components';
 
@@ -25,6 +24,7 @@ const Form = () => {
           <CardIcon>$</CardIcon>
           <CardTitle>{industry.title}</CardTitle>
           <CardDescription>{industry.description}</CardDescription>
+          <ReadMoreButton>Read More</ReadMoreButton>
         </Card>
       ))}
     </IndustryContainer>
@@ -38,12 +38,11 @@ const IndustryContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
-  // background-color: #f9f9f9;
   margin: 100px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-  margin: 20px;
+    margin: 20px;
     justify-items: center;
   }
 `;
@@ -60,6 +59,7 @@ const Card = styled.div`
   &:hover {
     transform: translateY(-5px);
     background-color: #031b30;
+    transition: transform 0.2s;
 
     & > p, & > h3 {
       color: white;
@@ -86,4 +86,20 @@ const CardTitle = styled.h3`
 const CardDescription = styled.p`
   font-size: 1rem;
   color: #666;
+`;
+
+const ReadMoreButton = styled.button`
+  background-color: #fff;
+  color: #031b30;
+  border: 1px solid #031b30;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, border 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: #FF0069;
+    color: white;
+    border: 1px solid #FF0069;
+  }
 `;

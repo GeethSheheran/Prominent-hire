@@ -52,10 +52,10 @@ export default Points;
 const CardContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   padding: 20px;
-  background-color:#031B30;
+  background-color: #031B30;
 `;
 
 const Card = styled.div`
@@ -63,27 +63,30 @@ const Card = styled.div`
   border-radius: 10px;
   padding: 20px;
   margin: 10px;
-  margin-top: 20px;
-//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 250px; /* Adjust the height as necessary */
 `;
 
 const Icon = styled.img`
   height: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 `;
 
 const Title = styled.h2`
   font-size: 1rem;
-  margin-bottom: 10px;
   color: #fff;
+  margin-bottom: 0px;
 `;
 
 const Description = styled.p`
   font-size: 0.8rem;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 `;
 
 const CardButton = styled.button`
@@ -93,10 +96,11 @@ const CardButton = styled.button`
   border-radius: 20px;
   padding: 10px 20px;
   cursor: pointer;
+  transition: background-color 0.3s, border 0.3s, color 0.3s;
 
   &:hover {
     background-color: #FF0069;
-    color:white;
-  border: 1px solid #FF0069;
+    color: white;
+    border: 1px solid #FF0069;
   }
 `;
