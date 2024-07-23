@@ -1,99 +1,136 @@
-// src/pages/Industry/Industry.js
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const IndustryPage = () => {
-  const industries = [
-    {
-      title: 'Career Advancement Services',
-      description: 'Our recruiters understand the complexities of the manufacturing sector, placing skilled workers who enhance productivity and quality.',
-      path: '/careers'
-    },
-    {
-      title: 'Recruitment Solutions',
-      description: 'We connect passionate educators and administrators with institutions that shape the minds of the future.',
-      path: '/recruitment'
-    },
-    {
-      title: 'Support and Transition',
-      description: 'In the dynamic world of retail and e-commerce, we find talent that drives sales, enhances customer experience, and innovates digital platforms.',
-      path: '/support'
-    }
-  ];
-
-  const navigate = useNavigate();
-
-  const handleCardClick = (path) => {
-    navigate(path);
-  };
-
   return (
-    <IndustryContainer>
-      {industries.map((industry, index) => (
-        <Card key={index} onClick={() => handleCardClick(industry.path)}>
-          <CardIcon>$</CardIcon>
-          <CardTitle>{industry.title}</CardTitle>
-          <CardDescription>{industry.description}</CardDescription>
-        </Card>
-      ))}
-    </IndustryContainer>
+    <Container>
+      <Card>
+        <Link to="/career">
+          <CardContent>
+            <Image src="/path/to/career-advancement-image.jpg" alt="Career Advancement" />
+            <TextContent>
+              <Title>Career Advancement Services</Title>
+              <List>
+                <Item>Career Guidance</Item>
+                <Item>Resume and Cover Letter Assistance</Item>
+                <Item>Interview Coaching</Item>
+                <Item>Salary Negotiation Advice</Item>
+                <Item>Job Alerts</Item>
+                <Item>Workshops and Webinars</Item>
+              </List>
+            </TextContent>
+          </CardContent>
+        </Link>
+      </Card>
+      <Card>
+        <Link to="/recruitment">
+          <CardContent>
+            <Image src="/path/to/recruitment-solutions-image.jpg" alt="Recruitment Solutions" />
+            <TextContent>
+              <Title>Recruitment Solutions</Title>
+              <List>
+                <Item>Industry Expertise</Item>
+                <Item>Continuous Support</Item>
+                <Item>Innovative Technology</Item>
+                <Item>Employer Branding Services</Item>
+                <Item>Market Insights</Item>
+                <Item>Talent Pool Access</Item>
+                <Item>Candidate Assessments</Item>
+                <Item>Onboarding Support</Item>
+                <Item>Employee Retention Strategies</Item>
+                <Item>Diversity and Inclusion Programs</Item>
+              </List>
+            </TextContent>
+          </CardContent>
+        </Link>
+      </Card>
+      <Card>
+        <Link to="/support">
+          <CardContent>
+            <Image src="/path/to/support-transition-image.jpg" alt="Support and Transition" />
+            <TextContent>
+              <Title>Support and Transition</Title>
+              <List>
+                <Item>Outplacement Services</Item>
+                <Item>Reference Checks</Item>
+              </List>
+            </TextContent>
+          </CardContent>
+        </Link>
+      </Card>
+    </Container>
   );
 };
 
-export default IndustryPage;
-
-const IndustryContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  margin: 100px;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    margin: 20px;
-    justify-items: center;
-  }
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  margin-top: 150px;
+  margin-bottom: 150px;
 `;
 
 const Card = styled.div`
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border: 1px solid #ccc;
   padding: 20px;
-  text-align: center;
-  background-color: #fff;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  text-align: left;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, background-color 0.2s;
-  cursor: pointer;
+  transition: transform 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px);
-    background-color: #031b30;
+    transform: translateY(-10px);
+  }
 
-    & > p, & > h3 {
-      color: white;
-    }
-
-    & > div {
-      color: white;
-    }
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 `;
 
-const CardIcon = styled.div`
-  font-size: 2rem;
-  color: #031b30;
-  margin-bottom: 10px;
+const CardContent = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
 `;
 
-const CardTitle = styled.h3`
-  font-size: 1.25rem;
-  margin-bottom: 10px;
-  color: #031b30;
+const Image = styled.img`
+  width: 30%;
+  height: auto;
+  border-radius: 10px;
+  margin-right: 20px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 `;
 
-const CardDescription = styled.p`
-  font-size: 1rem;
-  color: #666;
+const TextContent = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
+
+const Title = styled.h2`
+  margin: 0 0 20px 0;
+`;
+
+const List = styled.ul`
+  list-style-type: none;
+  padding: 0;
+`;
+
+const Item = styled.li`
+  margin: 10px 0;
+`;
+
+export default IndustryPage;

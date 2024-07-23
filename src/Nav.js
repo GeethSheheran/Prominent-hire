@@ -96,7 +96,7 @@ const NavMenu = styled.ul`
   list-style: none;
   display: flex;
   padding: 0;
-  margin: 0;
+  margin-left: -200px;
 
   @media (max-width: 768px) {
     position: fixed;
@@ -136,6 +136,7 @@ const StyledLink = styled(Link)`
 const NavButtons = styled.div`
   display: flex;
   align-items: center;
+  margin-right:150px;
 
   @media (max-width: 768px) {
     display: none;
