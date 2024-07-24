@@ -136,7 +136,7 @@ const FormContainer = styled.div`
   background-size: cover;
   background-position: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1020px) {
     flex-direction: column;
   }
 `;
@@ -145,8 +145,8 @@ const FormSection = styled.div`
   flex: 1;
   margin-right: 20px;
 
-  @media (max-width: 768px) {
-    margin-right: 0;
+  @media (max-width: 1020px) {
+    margin-bottom: 150px;
   }
 `;
 
@@ -198,7 +198,7 @@ const SubmitButton = styled.button`
     color:#fff;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1020px) {
     font-size: 0.9rem;
   }
 `;
@@ -211,7 +211,7 @@ const InfoSection = styled.div`
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  @media (max-width: 768px) {
+  @media (max-width: 1020px) {
     margin-top: 20px;
   }
 `;

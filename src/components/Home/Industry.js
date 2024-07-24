@@ -6,7 +6,7 @@ const Industry = () => {
     "Technology", "Finance and Banking", "Healthcare", "Engineering", "Marketing and Advertising",
     "Legal Services", "Pharmaceuticals", "Education", "Hospitality and Tourism", "Construction", "Information Technology",
     "Real Estate", "Logistics and Supply Chain", "Energy and Utilities",
-    "Manufacturing", "Creative Arts and Design", "Telecommunications", "Non-Profit and Social Services", "Human Resources"
+    "Manufacturing", "Creative Arts and Design", "Telecommunications", "Non-Profit and Social Services", "Human Resources", "Pharmaceuticals"
   ];
 
   return (

@@ -34,8 +34,7 @@ const WorkContainer = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding:50px;
     height: auto;
   }
 `;
@@ -49,10 +48,14 @@ const IconContainer = styled.div`
   color: rgba(255, 255, 255, 0.1); // Semi-transparent white color
   margin-right: 150px; // Space between icons and text
 
-  @media (max-width: 768px) {
+  @media (max-width: 1020px) {
     font-size: 10rem;
     margin-right: 0;
     margin-bottom: 20px;
+  }
+
+  @media (max-width: 720px) {
+    font-size: 8rem;
   }
 `;
 
@@ -61,8 +64,14 @@ const Content = styled.div`
   color: #ffffff;
   text-align: left;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1020px) {
+    margin-left: 5%;
+  }
+
+  @media (max-width: 720px) {
     text-align: center;
+    margin-left: 0;
+    max-width: 90%;
   }
 `;
 
@@ -74,7 +83,7 @@ const Title = styled.h1`
   line-height: normal;
   margin-bottom: 40px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1020px) {
     font-size: 20px;
     margin-bottom: 20px;
   }
@@ -89,7 +98,7 @@ const ListItem = styled.li`
   font-size: 1.2rem;
   margin-bottom: 10px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1020px) {
     font-size: 1rem;
   }
 `;

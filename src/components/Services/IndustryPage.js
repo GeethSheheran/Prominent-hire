@@ -6,7 +6,7 @@ const IndustryPage = () => {
   return (
     <Container>
       <Card>
-        <Link to="/career">
+        <Link to="/careers">
           <CardContent>
             <Image src="/path/to/career-advancement-image.jpg" alt="Career Advancement" />
             <TextContent>
@@ -76,8 +76,8 @@ const Card = styled.div`
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 10px;
-  width: 80%;
-  max-width: 800px;
+  width: 70%;
+  max-width: 80vw;
   text-align: left;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;

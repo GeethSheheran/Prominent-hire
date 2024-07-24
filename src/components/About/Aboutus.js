@@ -15,26 +15,30 @@ const Aboutus = () => {
 export default Aboutus;
 
 const AboutContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
-  margin: 100px;
+  margin: 100px auto;
+  width: 60vw;
 `;
 
 const Header = styled.h1`
   font-family: Outfit;
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 400;
-    text-align:center;
-    color: var(--Base, #00283C);
-    line-height: normal;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  color: var(--Base, #00283C);
+  line-height: normal;
 `;
 
 const Paragraph = styled.p`
   color: var(--Base, #00283C);
-    text-align: center;
-
-font-family: Outfit;
-font-size: 16px;
-font-style: normal;
-line-height: normal;
+  text-align: center;
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  line-height: normal;
 `;

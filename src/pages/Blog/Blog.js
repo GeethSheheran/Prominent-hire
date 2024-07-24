@@ -41,8 +41,15 @@ const BlogContainer = styled.div`
   padding: 20px;
   margin: 100px;
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    justify-items: center;
+  @media (max-width: 1020px) {
+    display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 50px 0;
+  width: 80%;
+  max-width: 1200px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
   }
 `;

@@ -38,7 +38,7 @@ const TouchContainer = styled.div`
     z-index: 1;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1020px) {
     height: auto;
     padding: 20px;
   }
@@ -56,7 +56,7 @@ const Title = styled.h1`
   font-size: 2.5rem;
   margin-bottom: 20px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1020px) {
     font-size: 2rem;
   }
 `;
@@ -65,7 +65,7 @@ const Description = styled.p`
   font-size: 1.2rem;
   margin-bottom: 40px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1020px) {
     font-size: 1rem;
     margin-bottom: 20px;
   }
@@ -85,7 +85,7 @@ const Button = styled.button`
     border-color: #FF0069;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1020px) {
     font-size: 0.9rem;
   }
 `;
