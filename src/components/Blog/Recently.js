@@ -9,7 +9,7 @@ const Recently = () => {
       <Card>
         <Link to="/navigating-career-changes">
           <CardContent>
-            <Image src="/path/to/navigating-career-changes-image.jpg" alt="Navigating Career Changes" />
+            <Image src="/soon.png" alt="Navigating Career Changes" />
             <TextContent>
               <CardTitle>Navigating Career Changes: Tips for Transitioning Smoothly</CardTitle>
               <Description>
@@ -22,7 +22,7 @@ const Recently = () => {
       <Card>
         <Link to="/future-of-remote-work">
           <CardContent>
-            <Image src="/path/to/future-of-remote-work-image.jpg" alt="The Future of Remote Work" />
+            <Image src="/soon.png" alt="The Future of Remote Work" />
             <TextContent>
               <CardTitle>The Future of Remote Work: Trends and Best Practices</CardTitle>
               <Description>
@@ -35,7 +35,7 @@ const Recently = () => {
       <Card>
         <Link to="/virtual-interviews-tips">
           <CardContent>
-            <Image src="/path/to/virtual-interviews-tips-image.jpg" alt="Virtual Interviews Tips" />
+            <Image src="/soon.png" alt="Virtual Interviews Tips" />
             <TextContent>
               <CardTitle>Mastering the Art of Virtual Interviews: Tips for Success</CardTitle>
               <Description>
@@ -48,7 +48,7 @@ const Recently = () => {
       <Card>
         <Link to="/employer-brand-strategies">
           <CardContent>
-            <Image src="/path/to/employer-brand-strategies-image.jpg" alt="Employer Brand Strategies" />
+            <Image src="/soon.png" alt="Employer Brand Strategies" />
             <TextContent>
               <CardTitle>Building a Strong Employer Brand: Strategies for Attracting Top Talent</CardTitle>
               <Description>

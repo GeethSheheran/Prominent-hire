@@ -6,17 +6,17 @@ const Team = () => {
     {
       role: 'Founder',
       name: 'John Alexander',
-      image: '/path-to-image1.jpg'
+      image: '/001.png'
     },
     {
       role: 'Co-Founder',
       name: 'Scotte Macleran',
-      image: '/path-to-image2.jpg'
+      image: '/002.png'
     },
     {
       role: 'Secretary',
       name: 'Mila Romena',
-      image: '/path-to-image3.jpg'
+      image: '/003.png'
     }
   ];
 

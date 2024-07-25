@@ -96,22 +96,19 @@ const Logo = styled.div`
   align-items: center;
   font-size: 1.5rem;
   color: white;
+  margin-left:10px;
 `;
 
 const LogoImage = styled.img`
   height: 40px;
-  margin-right: 10px;
 `;
 
 const NavMenu = styled.ul`
   list-style: none;
   display: flex;
   padding: 0;
-  margin-left: 10px;
-  justify-content: center;
-  width: 100%;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1124px) {
     position: fixed;
     top: 0;
     left: 0;
@@ -132,7 +129,7 @@ const NavItem = styled.li`
   color: white;
   cursor: pointer;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1124px) {
     margin: 20px 0;
   }
 `;
@@ -150,7 +147,7 @@ const NavButtonsDesktop = styled.div`
   align-items: center;
   margin-right: 150px;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1124px) {
     display: none;
   }
 `;
@@ -160,7 +157,7 @@ const NavButtonsMobile = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1124px) {
     display: flex;
     margin-top: 20px;
   }
@@ -175,6 +172,7 @@ const NavButton = styled.button`
   margin-left: 10px;
   cursor: pointer;
   font-weight: bold;
+  font-size:0.8rem;
   margin-top: 10px;
 
   &:hover {
@@ -182,7 +180,7 @@ const NavButton = styled.button`
     color: black;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1124px) {
     margin: 10px 0;
   }
 `;
@@ -191,19 +189,20 @@ const NavButton1 = styled.button`
   background-color: #FFD700;
   color: black;
   border: none;
-  border-radius: 15px;
-  padding: 10px 20px;
+  border-radius: 20px;
+  padding: 12px 20px;
   margin-left: 10px;
   cursor: pointer;
   font-weight: bold;
   margin-top: 10px;
+  font-size:0.8rem;
 
   &:hover {
     background-color: #FF0069;
     color: white;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1124px) {
     margin: 10px 0;
   }
 `;
@@ -213,9 +212,9 @@ const Hamburger = styled.div`
   cursor: pointer;
   font-size: 2rem;
   color: white;
-  margin-right: 80px;
+  margin-right: 60px;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1124px) {
     display: block;
   }
 `;
@@ -223,7 +222,7 @@ const Hamburger = styled.div`
 const CloseButton = styled.div`
   position: absolute;
   top: 20px;
-  right: 80px;
+  right: 60px;
   font-size: 2rem;
   cursor: pointer;
   color: white;

@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaBriefcase } from 'react-icons/fa'; // Example icon, replace with your actual icon
 
 const Work = () => {
   return (
     <WorkContainer>
       <IconContainer>
-        <FaBriefcase />
+        <Icon src="/vector.png" alt="Company Icon" />
       </IconContainer>
       <Content>
         <Title>These are the essence of our company. They define us, guide us, and influence every aspect of our work.</Title>
@@ -34,7 +33,7 @@ const WorkContainer = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    padding:50px;
+    padding: 50px;
     height: auto;
   }
 `;
@@ -56,6 +55,14 @@ const IconContainer = styled.div`
 
   @media (max-width: 720px) {
     font-size: 8rem;
+  }
+`;
+
+const Icon = styled.img`
+  width: 100%;
+  height: auto;
+  @media (max-width: 720px) {
+  width: 60%;
   }
 `;
 
@@ -96,6 +103,7 @@ const List = styled.ul`
 
 const ListItem = styled.li`
   font-size: 1.2rem;
+  font-weight:200;
   margin-bottom: 10px;
 
   @media (max-width: 1020px) {

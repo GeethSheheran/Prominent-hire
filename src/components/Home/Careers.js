@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import VideoPlaceholder from './video.png'; // Ensure this path is correct
+import VideoPlaceholder from './video.png'; 
 
 const Careers = () => {
   return (
@@ -15,9 +15,9 @@ const Careers = () => {
         </Description>
         <Button>Explore Careers</Button>
       </TextContainer>
-      <VideoContainer>
-        <Video src={VideoPlaceholder} alt="Video placeholder" />
-      </VideoContainer>
+      <ImageContainer>
+        <Image src={VideoPlaceholder} alt="Video placeholder" />
+      </ImageContainer>
     </CareersContainer>
   );
 };
@@ -52,11 +52,12 @@ const TextContainer = styled.div`
 const Title = styled.h1`
   font-size: 2rem;
   margin-bottom: 20px;
-  @media (max-width: 1024px){
-  padding:0 50px;
-  font-size: 1.5rem;
-  line-height:1.2;
-  margin-bottom:20px;
+  
+  @media (max-width: 1024px) {
+    padding: 0 50px;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
   }
 `;
 
@@ -64,11 +65,11 @@ const Description = styled.p`
   font-size: 1rem;
   margin-bottom: 30px;
   line-height: 1.5;
-  @media (max-width: 1024px){
-  font-size: 1rem;
-  margin:0 50px;
-  margin-bottom:20px;
-
+  
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    margin: 0 50px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -87,12 +88,12 @@ const Button = styled.button`
   }
 `;
 
-const VideoContainer = styled.div`
+const ImageContainer = styled.div`
   flex-shrink: 0;
   max-width: 100%;
 `;
 
-const Video = styled.img`
+const Image = styled.img`
   max-width: 40vw;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

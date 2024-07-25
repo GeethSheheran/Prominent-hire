@@ -8,7 +8,7 @@ const IndustryPage = () => {
       <Card>
         <Link to="/careers">
           <CardContent>
-            <Image src="/path/to/career-advancement-image.jpg" alt="Career Advancement" />
+            <Image src="/career.png" alt="Career Advancement" />
             <TextContent>
               <Title>Career Advancement Services</Title>
               <List>
@@ -26,7 +26,7 @@ const IndustryPage = () => {
       <Card>
         <Link to="/recruitment">
           <CardContent>
-            <Image src="/path/to/recruitment-solutions-image.jpg" alt="Recruitment Solutions" />
+            <Image src="/recruitment.png" alt="Recruitment Solutions" />
             <TextContent>
               <Title>Recruitment Solutions</Title>
               <List>
@@ -48,7 +48,7 @@ const IndustryPage = () => {
       <Card>
         <Link to="/support">
           <CardContent>
-            <Image src="/path/to/support-transition-image.jpg" alt="Support and Transition" />
+            <Image src="/support.png" alt="Support and Transition" />
             <TextContent>
               <Title>Support and Transition</Title>
               <List>
