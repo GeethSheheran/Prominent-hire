@@ -32,10 +32,12 @@ const Footer = () => {
         </ContactInformation>
         <Pages>
           <PagesTitle>Pages</PagesTitle>
-          <PageLink href="#industries">Industries & Functions</PageLink>
-          <PageLink href="#services">Services</PageLink>
-          <PageLink href="#resources">Resources</PageLink>
-          <PageLink href="#information">Information</PageLink>
+          <PageLink href="/home">Home</PageLink>
+          <PageLink href="/industries">Industries</PageLink>
+          <PageLink href="/services">Service</PageLink>
+          <PageLink href="/blogs">Blogs</PageLink>
+          <PageLink href="/about">About</PageLink>
+          <PageLink href="/contact">Contact</PageLink>
         </Pages>
       </FooterContent>
     </FooterContainer>
