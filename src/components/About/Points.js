@@ -98,5 +98,6 @@ const CardButton = styled.button`
     background-color: #FF0069;
     color:white;
   border: 1px solid #FF0069;
+  transition: background-color 0.3s ease, color 0.3s ease;
   }
 `;

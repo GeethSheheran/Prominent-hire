@@ -96,7 +96,7 @@ const CardButton = styled.button`
   border-radius: 20px;
   padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.3s, border 0.3s, color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
     background-color: #FF0069;

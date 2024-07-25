@@ -96,7 +96,7 @@ const Logo = styled.div`
   align-items: center;
   font-size: 1.5rem;
   color: white;
-  margin-left:10px;
+  margin-left: 10px;
 `;
 
 const LogoImage = styled.img`
@@ -137,6 +137,8 @@ const NavItem = styled.li`
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${({ isActive }) => (isActive ? '#FFD700' : 'white')};
+  transition: color 0.3s ease;
+
   &:hover {
     color: #FFD700;
   }
@@ -172,8 +174,9 @@ const NavButton = styled.button`
   margin-left: 10px;
   cursor: pointer;
   font-weight: bold;
-  font-size:0.8rem;
+  font-size: 0.8rem;
   margin-top: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
     background-color: #fff;
@@ -195,7 +198,8 @@ const NavButton1 = styled.button`
   cursor: pointer;
   font-weight: bold;
   margin-top: 10px;
-  font-size:0.8rem;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
     background-color: #FF0069;
@@ -226,4 +230,9 @@ const CloseButton = styled.div`
   font-size: 2rem;
   cursor: pointer;
   color: white;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #FFD700;
+  }
 `;
