@@ -5,7 +5,7 @@ const Work = () => {
   return (
     <WorkContainer>
       <IconContainer>
-        <Icon src="/vector.png" alt="Company Icon" />
+        <Icon src="/vector.png" alt="work Icon" />
       </IconContainer>
       <Content>
         <Title>These are the essence of our company. They define us, guide us, and influence every aspect of our work.</Title>
