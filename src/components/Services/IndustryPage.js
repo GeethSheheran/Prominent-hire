@@ -6,7 +6,7 @@ const IndustryPage = () => {
   return (
     <Container>
       <Card>
-        <Link to="/careers">
+        <Link to="/find-job">
           <CardContent>
             <Image src="/career.png" alt="Career Advancement" />
             <TextContent>
@@ -24,7 +24,7 @@ const IndustryPage = () => {
         </Link>
       </Card>
       <Card>
-        <Link to="/recruitment">
+        <Link to="/hire-talent">
           <CardContent>
             <Image src="/recruitment.png" alt="Recruitment Solutions" />
             <TextContent>
@@ -46,7 +46,7 @@ const IndustryPage = () => {
         </Link>
       </Card>
       <Card>
-        <Link to="/support">
+        <Link to="/contact">
           <CardContent>
             <Image src="/support.png" alt="Support and Transition" />
             <TextContent>
