@@ -55,8 +55,8 @@ const Nav = () => {
             </StyledLink>
           </NavItem>
           <NavButtonsMobile>
-            <NavButton to="/find-job">Find a Job</NavButton>
-            <NavButton1 to="/hire-talent">Hire Talent</NavButton1>
+            <NavButton to="/find-job" onClick={closeMenu}>Find a Job</NavButton>
+            <NavButton1 to="/hire-talent" onClick={closeMenu}>Hire Talent</NavButton1>
           </NavButtonsMobile>
         </NavMenu>
       </LeftSection>
