@@ -55,14 +55,14 @@ const Nav = () => {
             </StyledLink>
           </NavItem>
           <NavButtonsMobile>
-            <NavButton>Find a Job</NavButton>
-            <NavButton1>Hire Talent</NavButton1>
+            <NavButton to="/find-job">Find a Job</NavButton>
+            <NavButton1 to="/hire-talent">Hire Talent</NavButton1>
           </NavButtonsMobile>
         </NavMenu>
       </LeftSection>
       <NavButtonsDesktop>
-        <NavButton>Find a Job</NavButton>
-        <NavButton1>Hire Talent</NavButton1>
+        <NavButton to="/find-job">Find a Job</NavButton>
+        <NavButton1 to="/hire-talent">Hire Talent</NavButton1>
       </NavButtonsDesktop>
       <Hamburger onClick={toggleMenu}>
         {isOpen ? <FaTimes /> : <FaBars />}
@@ -82,7 +82,7 @@ const Navbar = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 15px 5%;
-  z-index: 1000; /* Ensure the navbar is on top */
+  z-index: 1000;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 `;
 
@@ -120,7 +120,7 @@ const NavMenu = styled.ul`
     justify-content: center;
     transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')};
     transition: transform 0.3s ease-in-out;
-    z-index: 999; /* Ensure the menu is above other content */
+    z-index: 999;
   }
 `;
 
@@ -165,7 +165,7 @@ const NavButtonsMobile = styled.div`
   }
 `;
 
-const NavButton = styled.button`
+const NavButton = styled(Link)`
   background-color: #031B30;
   color: white;
   border: none;
@@ -177,6 +177,7 @@ const NavButton = styled.button`
   font-size: 0.8rem;
   margin-top: 10px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
 
   &:hover {
     background-color: #fff;
@@ -188,7 +189,7 @@ const NavButton = styled.button`
   }
 `;
 
-const NavButton1 = styled.button`
+const NavButton1 = styled(Link)`
   background-color: #FFD700;
   color: black;
   border: none;
@@ -200,6 +201,7 @@ const NavButton1 = styled.button`
   margin-top: 10px;
   font-size: 0.8rem;
   transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
 
   &:hover {
     background-color: #FF0069;

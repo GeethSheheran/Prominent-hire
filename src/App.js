@@ -14,6 +14,8 @@ import Recruitment from './components/Services/Recruitment/Recruitment';
 import Support from './components/Services/Support/Support';
 import About from './pages/About/About';
 import './App.css';
+import Hiretalent from './pages/Hiretalent/Hiretalent';
+import Findjob from './pages/Findjob/Findjob';
 
 const App = () => {
   return (
@@ -30,6 +32,8 @@ const App = () => {
         <Route path="/support" element={<Support />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/hire-talent" element={<Hiretalent />} />
+        <Route path="/find-job" element={<Findjob />} />
         <Route path="/blogtitles/:id" element={<Blogtitles />} />
         <Route path="/bloginfo/:id" element={<Bloginfo />} /> 
       </Routes>
