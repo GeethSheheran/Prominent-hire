@@ -89,6 +89,7 @@ const Navbar = styled.nav`
 const LeftSection = styled.div`
   display: flex;
   align-items: center;
+  width:60%
 `;
 
 const Logo = styled.div`
@@ -96,7 +97,7 @@ const Logo = styled.div`
   align-items: center;
   font-size: 1.5rem;
   color: white;
-  margin-left: 10px;
+  margin-left: 5%; /* Percentage-based margin */
 `;
 
 const LogoImage = styled.img`
@@ -114,6 +115,8 @@ const NavMenu = styled.ul`
     left: 0;
     width: 100vw;
     height: 100vh;
+    padding:0;
+    margin:0;
     background-color: #031B30;
     flex-direction: column;
     align-items: center;
@@ -147,7 +150,8 @@ const StyledLink = styled(Link)`
 const NavButtonsDesktop = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 150px;
+  margin-right: 12%; /* Percentage-based margin */
+
 
   @media (max-width: 1124px) {
     display: none;
@@ -202,6 +206,7 @@ const NavButton1 = styled(Link)`
   font-size: 0.8rem;
   transition: background-color 0.3s ease, color 0.3s ease;
   text-decoration: none;
+  margin-right: 0; /* Percentage-based margin */
 
   &:hover {
     background-color: #FF0069;
@@ -218,7 +223,7 @@ const Hamburger = styled.div`
   cursor: pointer;
   font-size: 2rem;
   color: white;
-  margin-right: 60px;
+  margin-right: 10%; /* Percentage-based margin */
 
   @media (max-width: 1124px) {
     display: block;
@@ -226,9 +231,10 @@ const Hamburger = styled.div`
 `;
 
 const CloseButton = styled.div`
+  display: none; /* Hide initially */
   position: absolute;
   top: 20px;
-  right: 60px;
+  right: 5%; /* Percentage-based margin */
   font-size: 2rem;
   cursor: pointer;
   color: white;
@@ -236,5 +242,9 @@ const CloseButton = styled.div`
 
   &:hover {
     color: #FFD700;
+  }
+
+  @media (max-width: 1124px) {
+    display: block; /* Show when in mobile view */
   }
 `;
