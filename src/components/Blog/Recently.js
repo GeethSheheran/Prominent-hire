@@ -70,6 +70,10 @@ const Container = styled.div`
   margin-top: 50px;
   margin-bottom: 50px;
   padding: 0 20px;
+  @media (max-width: 768px) {
+  padding: 0 0px;
+    
+  }
 `;
 
 const Title = styled.h2`
@@ -117,7 +121,9 @@ const Image = styled.img`
   margin-right: 20px;
 
   @media (max-width: 768px) {
-    width: 100%;
+      width: 200px;
+      heght: 200px;
+
     height: auto;
     margin-right: 0;
     margin-bottom: 20px;

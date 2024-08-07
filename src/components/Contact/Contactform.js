@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import emailjs from 'emailjs-com';
 
 const ContactForm = () => {
+  useEffect(() => {
+    // Initialize EmailJS with your user ID
+    emailjs.init('Kniwrt7R204tb9yHV'); // replace with your EmailJS user ID
+  }, []);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -32,11 +37,18 @@ const ContactForm = () => {
 
     setError('');
 
+    const templateParams = {
+      from_name: `${firstName} ${lastName}`,
+      from_email: email,
+      to_name: 'gs.sheheran@gmail.com',
+      subject: `${firstName} ${lastName}`,
+      message_html: `${message}\n\nTP Number: ${tpNumber}`
+    };
+
     emailjs.send(
-      'your_service_id', // replace with your EmailJS service ID
-      'your_template_id', // replace with your EmailJS template ID
-      formData,
-      'your_user_id' // replace with your EmailJS user ID
+      'service_5cgbnl5', // replace with your EmailJS service ID
+      'template_0lggbp6', // replace with your EmailJS template ID
+      templateParams
     ).then((result) => {
       alert('Message sent successfully!');
       setFormData({
@@ -132,12 +144,12 @@ const FormContainer = styled.div`
   justify-content: space-between;
   padding: 100px;
   background-color: #fff;
-  background-image: url('/mnt/data/Screenshot 2024-07-22 at 2.02.36 PM.png');
   background-size: cover;
   background-position: center;
 
   @media (max-width: 1020px) {
     flex-direction: column;
+    padding: 40px;
   }
 `;
 
@@ -147,6 +159,7 @@ const FormSection = styled.div`
 
   @media (max-width: 1020px) {
     margin-bottom: 150px;
+    margin-right: 0px;
   }
 `;
 
@@ -187,15 +200,16 @@ const SubmitButton = styled.button`
   color: #031B30;
   border: 1px solid #031B30;
   border-radius: 20px;
-  padding: 10px 20px;
+  padding: 15px 20px;
   cursor: pointer;
+  font-size: 1rem;
   transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
-  margin-top:20px;
+  margin-top: 20px;
 
   &:hover {
     background-color: #FF0069;
     border-color: #FF0069;
-    color:#fff;
+    color: #fff;
   }
 
   @media (max-width: 1020px) {
@@ -218,7 +232,11 @@ const InfoSection = styled.div`
 
 const ContactInfo = styled.div`
   color: #031b30;
-  margin-left:50px;
+  margin-left: 50px;
+
+  @media (max-width: 1020px) {
+    margin-left: 10px;
+  }
 `;
 
 const Title = styled.h2`

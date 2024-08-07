@@ -31,6 +31,9 @@ const AboutContainer = styled.div`
   align-items: center;
   padding: 60px 20px;
   text-align: center;
+  @media (max-width: 768px){
+  padding:60px 0px;
+  }
 `;
 
 const SectionTitle = styled.h3`
@@ -58,6 +61,10 @@ const Description = styled.p`
   max-width: 650px;
   margin-bottom: 0;
   line-height: 1.5;
+  @media (max-width: 768px){
+  font-size: 1rem;
+  margin:0 10px;
+  }
 `;
 
 const Button = styled.button`
@@ -101,6 +108,6 @@ const ExtraText = styled.p`
   padding: 0px;
   @media (max-width: 768px){
   font-size: 1rem;
-  margin:0 50px;
+  margin:0 20px;
   }
 `;

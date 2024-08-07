@@ -1,7 +1,6 @@
-// Findyourjob.js
-
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import emailjs from 'emailjs-com';
 
 const FormContainer = styled.div`
   display: flex;
@@ -25,8 +24,8 @@ const Title = styled.h1`
 const Description = styled.p`
   text-align: center;
   width: 40vw;
-  margin:40px;
-  
+  margin: 40px;
+
   @media (max-width: 768px) {
     width: 80%;
   }
@@ -59,7 +58,7 @@ const Input = styled.input`
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 15px;
   box-sizing: border-box;
 `;
 
@@ -69,7 +68,7 @@ const TextArea = styled.textarea`
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 15px;
   height: 100px;
   box-sizing: border-box;
 
@@ -83,9 +82,9 @@ const Button = styled.button`
   padding: 10px;
   font-size: 16px;
   color: #fff;
-  background-color: #ffcc00;
+  background-color: #ff0069;
   border: none;
-  border-radius: 4px;
+  border-radius: 15px;
   cursor: pointer;
   margin-top: 20px;
 
@@ -111,7 +110,7 @@ const FileInputLabel = styled.label`
   color: #fff;
   background-color: #b0b0b0;
   border: none;
-  border-radius: 4px;
+  border-radius: 15px;
   cursor: pointer;
   width: 100%;
   text-align: center;
@@ -120,6 +119,13 @@ const FileInputLabel = styled.label`
   &:hover {
     background-color: #a0a0a0;
   }
+`;
+
+const FileName = styled.p`
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
 `;
 
 const Findyourjob = () => {
@@ -132,9 +138,13 @@ const Findyourjob = () => {
     resume: null,
     objectives: ''
   });
+  const [fileName, setFileName] = useState('');
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
+    if (files) {
+      setFileName(files[0].name);
+    }
     setFormData((prevData) => ({
       ...prevData,
       [name]: files ? files[0] : value
@@ -143,14 +153,66 @@ const Findyourjob = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Add form submission logic here (e.g., send to API)
+
+    const { firstName, lastName, email, phone, industry, resume, objectives } = formData;
+
+    if (!firstName || !lastName || !email || !phone || !industry || !objectives) {
+      alert('All fields except resume are required.');
+      return;
+    }
+
+    const sendEmail = (base64Resume) => {
+      emailjs.send(
+        'service_5cgbnl5', // replace with your EmailJS service ID
+        'template_u77csbb', // replace with your EmailJS template ID
+        {
+          to_name: 'Job Coordinator', // Replace with the actual recipient name if needed
+          from_name: `${formData.firstName} ${formData.lastName}`,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          industry: formData.industry,
+          objectives: formData.objectives,
+          resume: base64Resume,
+          resume_filename: formData.resume ? formData.resume.name : ''
+        },
+        'Kniwrt7R204tb9yHV' // replace with your EmailJS user ID
+      ).then((result) => {
+        alert('Message sent successfully!');
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          industry: '',
+          resume: null,
+          objectives: ''
+        });
+        setFileName('');
+      }, (error) => {
+        alert('An error occurred, please try again.');
+      });
+    };
+
+    if (resume) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64Resume = reader.result.split(',')[1]; // Get base64 string without the data prefix
+        sendEmail(base64Resume);
+      };
+      reader.readAsDataURL(resume); // Convert file to Base64
+    } else {
+      sendEmail('');
+    }
   };
 
   return (
     <FormContainer>
       <Title>Find Your Job</Title>
-      <Description>Please fill out the form below to get started on your job search journey. Our team will review your information and get in touch with you soon.</Description>
+      <Description>
+        Please fill out the form below to get started on your job search journey. Our team will review your information and get in touch with you soon.
+      </Description>
       <Form onSubmit={handleSubmit}>
         <Input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} />
         <Input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} />
@@ -159,6 +221,7 @@ const Findyourjob = () => {
         <Input type="text" name="industry" placeholder="Interested Industry" value={formData.industry} onChange={handleChange} />
         <FileInputLabel htmlFor="resume-upload">Upload Your Resume</FileInputLabel>
         <FileInput type="file" id="resume-upload" name="resume" onChange={handleChange} />
+        {fileName && <FileName>Uploaded: {fileName}</FileName>}
         <TextArea name="objectives" placeholder="Your Objectives" value={formData.objectives} onChange={handleChange} />
         <Button type="submit">Submit</Button>
       </Form>

@@ -14,7 +14,7 @@ const FormContainer = styled.div`
   }
 
   @media (max-width: 480px) {
-    margin: 10px 0;
+    margin: 10px 20px;
   }
 `;
 
@@ -84,9 +84,9 @@ const Button = styled.button`
   padding: 10px;
   font-size: 16px;
   color: #fff;
-  background-color: #ffcc00;
+  background-color: #FF0069;
   border: none;
-  border-radius: 4px;
+  border-radius: 15px;
   cursor: pointer;
   margin-top: 20px;
 
@@ -112,7 +112,7 @@ const FileInputLabel = styled.label`
   color: #fff;
   background-color: #b0b0b0;
   border: none;
-  border-radius: 4px;
+  border-radius: 15px;
   cursor: pointer;
   width: 100%;
   text-align: center;

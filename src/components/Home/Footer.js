@@ -32,7 +32,7 @@ const Footer = () => {
         </ContactInformation>
         <Pages>
           <PagesTitle>Pages</PagesTitle>
-          <PageLink href="/home">Home</PageLink>
+          <PageLink href="/">Home</PageLink>
           <PageLink href="/industries">Industries</PageLink>
           <PageLink href="/services">Service</PageLink>
           <PageLink href="/blogs">Blogs</PageLink>
