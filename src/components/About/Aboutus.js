@@ -21,15 +21,15 @@ const AboutContainer = styled.div`
   justify-content: center;
   padding: 20px;
   margin: 100px auto;
-  width: 60vw;
+  width: 80%;
 
   @media (max-width: 768px) {
-    width: 90vw;
+    width: 90%;
     margin: 50px auto;
   }
 
   @media (max-width: 480px) {
-    width: 100vw;
+    width: 95%;
     margin: 30px auto;
     padding: 10px;
   }
@@ -38,11 +38,11 @@ const AboutContainer = styled.div`
 const Header = styled.h1`
   font-family: 'Outfit', sans-serif;
   font-size: 36px;
-  font-style: normal;
   font-weight: 400;
   text-align: center;
-  color: var(--Base, #00283C);
-  line-height: normal;
+  color: #00283C;
+  line-height: 1.2;
+  margin-bottom: 20px;
 
   @media (max-width: 768px) {
     font-size: 28px;
@@ -54,18 +54,20 @@ const Header = styled.h1`
 `;
 
 const Paragraph = styled.p`
-  color: var(--Base, #00283C);
+  color: #00283C;
   text-align: center;
   font-family: 'Outfit', sans-serif;
   font-size: 16px;
-  font-style: normal;
-  line-height: normal;
+  line-height: 1.5;
+  margin: 0 20px;
 
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 16px;
+    margin: 0 10px;
   }
 
   @media (max-width: 480px) {
-    font-size: 12px;
+    font-size: 16px;
+    margin: 0 5px;
   }
 `;

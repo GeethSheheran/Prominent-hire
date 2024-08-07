@@ -8,13 +8,17 @@ const Footer = () => {
     <FooterContainer>
       <FooterContent>
         <LogoContainer>
-          <LogoImage src={Logo} alt="Prominent Hire Logo" />
+          <LogoLink href="/">
+            <LogoImage src={Logo} alt="Prominent Hire Logo" />
+          </LogoLink>
         </LogoContainer>
         <ContactInformation>
           <ContactTitle>Contact Information</ContactTitle>
-          <ContactLink href="tel:+94761234567">+94 76 123 4567</ContactLink>
-          <ContactLink href="mailto:prominenthire@gmail.com">prominenthire@gmail.com</ContactLink>
-          <ContactText>Prominent Hire, State Name, Country</ContactText>
+          <ContactLink href="tel:+6125586221">+(612) 558 6221</ContactLink>
+          <ContactLink href="mailto:contact@prominenthire.com">contact@prominenthire.com</ContactLink>
+          <ContactLink href="https://www.google.com/maps/place/Minneapolis,+MN" target="_blank" rel="noopener noreferrer">
+            Prominent Hire, Minneapolis, MN
+          </ContactLink>
           <SocialIcons>
             <SocialLink href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
               <FaFacebook />
@@ -79,14 +83,16 @@ const LogoContainer = styled.div`
   }
 `;
 
+const LogoLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+`;
+
 const LogoImage = styled.img`
   height: 150px;
   margin: 30px 50px;
-`;
-
-const LogoText = styled.div`
-  font-size: 1rem;
-  color: white;
 `;
 
 const ContactInformation = styled.div`
@@ -113,10 +119,6 @@ const ContactLink = styled.a`
   &:hover {
     text-decoration: underline;
   }
-`;
-
-const ContactText = styled.div`
-  margin-bottom: 20px;
 `;
 
 const SocialIcons = styled.div`

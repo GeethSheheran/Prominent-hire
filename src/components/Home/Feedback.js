@@ -1,211 +1,260 @@
-import React, { useState, useEffect } from 'react';
-import styled, { keyframes, css } from 'styled-components';
-import UserImage from './video.png'; // Ensure this path is correct
+import React, { Fragment } from "react";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from "prop-types";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
+const testimonialList = [
+  {
+    author: {
+      fullName: "David Nguyen",
+      picture: "https://cdn.easyfrontend.com/pictures/users/user2.jpg",
+      designation: "Marketing Specialist",
+    },
+    rating: 5.0,
+    description:
+      "My experience with Prominent Hire was outstanding. They went above and beyond to ensure I was well-prepared and confident for every interview. Their personalized approach and genuine care for my success made all the difference. I found a job that I love and that aligns perfectly with my career goals.",
+  },
+  {
+    author: {
+      fullName: "Alex Johnson",
+      picture: "https://cdn.easyfrontend.com/pictures/users/user3.jpg",
+      designation: "HR Manager",
+    },
+    rating: 4.8,
+    description:
+      "Partnering with Prominent Hire was a game-changer for our hiring process. Their team truly understood our needs and delivered top-tier candidates that perfectly matched our company culture. Their professionalism and dedication made all the difference. We couldn't be happier with the results.",
+  },
+  {
+    author: {
+      fullName: "Jessica Brown",
+      picture: "https://cdn.easyfrontend.com/pictures/users/user27.jpg",
+      designation: "Project Manager",
+    },
+    rating: 4.5,
+    description:
+      "I was impressed by the level of dedication and professionalism at Prominent Hire. From our initial conversation to the moment I accepted the job offer, their team was supportive and attentive. They provided invaluable advice and resources that helped me stand out to potential employers. I couldn't be happier with the outcome",
+  },
+  // Add more testimonials as needed
+];
+
+const Section = styled.section`
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+  padding: 60px 0;
+  margin: 0 15vw;
+  text-align: center;
+
+  @media (max-width: 600px) {
+    margin: 0 8vw;
+    padding: 40px 0;
+  }
+
+  &.gray {
+    background-color: rgb(246, 246, 246);
+  }
+
+  &.dark-gray {
+    background-color: rgb(30, 39, 53);
+    color: #ffffff;
+  }
+
+  &.dark {
+    background-color: rgb(11, 23, 39);
+    color: #ffffff;
+  }
+`;
+
+const Heading = styled.h2`
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 25px;
+  color: #212529;
+
+  @media (min-width: 768px) {
+    font-size: 32px;
+    line-height: 45px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 24px;
+    line-height: 32px;
+  }
+`;
+
+const SubHeading = styled.p`
+  font-size: 16px;
+  line-height: 22px;
+  color: #212529;
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+    line-height: 20px;
+  }
+`;
+
+const TestimonialItemWrapper = styled.div`
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 4px 4px rgba(159, 190, 218, 0.37);
+  transition: transform 0.25s ease-in-out;
+  padding: 20px;
+  margin: 20px;
+  height: 240px;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  @media (max-width: 600px) {
+    height: 300px;
+    margin: 10px;
+    padding: 15px;
+  }
+`;
+
+const TestimonialContent = styled.div`
+  margin-top: 15px;
+  color: #212529;
+`;
+
+const TopSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align:left;
+`;
+
+const AuthorInfo = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const AuthorImage = styled.img`
+  border-radius: 50%;
+  border: 1px solid #dee2e6;
+  width: 47px;
+  height: 47px;
+  margin-right: 10px;
+`;
+
+const RatingWrapper = styled.div`
+  margin-bottom: 1rem;
+
+  @media (max-width: 600px) {
+    width: 50%;
+  }
+
+  .fa-star:not(.active) {
+    color: #031B30;
+  }
+
+  .fa-star.active {
+    color: #FF0069;
+  }
+`;
+
+const Rating = ({ rating, showLabel, className, ...rest }) => (
+  <RatingWrapper className={className} {...rest}>
+    <span>
+      {[...Array(5)].map((_, i) => {
+        const index = i + 1;
+        let content = "";
+        if (index <= Math.floor(rating))
+          content = <FontAwesomeIcon icon={faStar} className="me-1 active" />;
+        else if (rating > i && rating < index + 1)
+          content = (
+            <FontAwesomeIcon icon={faStarHalfAlt} className="me-1 active" />
+          );
+        else if (index > rating)
+          content = <FontAwesomeIcon icon={faStar} className="me-1" />;
+
+        return <Fragment key={i}>{content}</Fragment>;
+      })}
+    </span>
+    {showLabel && <span>{rating.toFixed(1)}</span>}
+  </RatingWrapper>
+);
+
+Rating.propTypes = {
+  rating: PropTypes.number.isRequired,
+  showLabel: PropTypes.bool,
+  className: PropTypes.string,
+};
+
+const TestimonialItem = ({ testimonial }) => (
+  <TestimonialItemWrapper>
+    <TopSection>
+      <AuthorInfo>
+        <AuthorImage
+          src={testimonial.author.picture}
+          alt={testimonial.author.fullName}
+        />
+        <div>
+          <h4 style={{ margin: 0, fontSize: "1.25rem" }}>
+            {testimonial.author.fullName}
+          </h4>
+          <p style={{ margin: 0, fontSize: "0.875rem" }}>
+            <i>{testimonial.author.designation}</i>
+          </p>
+        </div>
+      </AuthorInfo>
+      <Rating rating={testimonial.rating} showLabel={false} />
+    </TopSection>
+    <TestimonialContent>
+      <p className="opacity-50 mb-4">{testimonial.description}</p>
+    </TestimonialContent>
+  </TestimonialItemWrapper>
+);
+
+TestimonialItem.propTypes = {
+  testimonial: PropTypes.object.isRequired,
+};
 
 const Feedback = () => {
-  const testimonials = [
-    {
-      name: 'Alexandra Woodford',
-      rating: '★★★★★',
-      description: 'Learn how upskilling, reskilling, and preskilling can help healthcare institutions retain and enhance their workforce.',
-      image: UserImage
-    },
-    {
-      name: 'John Doe',
-      rating: '★★★★★',
-      description: 'Upskilling and reskilling have significantly improved our operational efficiency.',
-      image: UserImage
-    },
-    {
-      name: 'Jane Smith',
-      rating: '★★★★★',
-      description: 'Preskilling has prepared our workforce for future challenges.',
-      image: UserImage
-    },
-    {
-      name: 'Michael Johnson',
-      rating: '★★★★★',
-      description: 'Our team’s skills have been greatly enhanced through these programs.',
-      image: UserImage
-    }
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState('');
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  const next = () => {
-    setDirection('next');
-    setCurrentIndex((prevIndex) => (prevIndex + (isMobile ? 1 : 2)) % testimonials.length);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
-
-  const prev = () => {
-    setDirection('prev');
-    setCurrentIndex((prevIndex) => (prevIndex - (isMobile ? 1 : 2) + testimonials.length) % testimonials.length);
-  };
-
-  const visibleTestimonials = testimonials.slice(currentIndex, currentIndex + (isMobile ? 1 : 2));
 
   return (
-    <FeedbackContainer>
-      <Content>
-        <Title>Testimonials</Title>
-        <TestimonialsContainer>
-          <Arrow onClick={prev}>&lt;</Arrow>
-          <TestimonialWrapper direction={direction}>
-            {visibleTestimonials.map((testimonial, index) => (
-              <TestimonialCard key={index}>
-                <UserInfo>
-                  <UserImageStyled src={testimonial.image} alt={testimonial.name} />
-                  <UserName>{testimonial.name}</UserName>
-                  <UserRating>{testimonial.rating}</UserRating>
-                </UserInfo>
-                <UserDescription>{testimonial.description}</UserDescription>
-              </TestimonialCard>
-            ))}
-          </TestimonialWrapper>
-          <Arrow onClick={next}>&gt;</Arrow>
-        </TestimonialsContainer>
-      </Content>
-    </FeedbackContainer>
+    <Section>
+      <Heading>Testimonials</Heading>
+      <SubHeading>
+        {/* It’s easier to reach your savings goals when you have the right savings
+        account. Take a look and find the right one for you! */}
+      </SubHeading>
+      <Slider {...settings}>
+        {testimonialList.map((testimonial, i) => (
+          <TestimonialItem key={i} testimonial={testimonial} />
+        ))}
+      </Slider>
+    </Section>
   );
 };
 
 export default Feedback;
-
-const swipeLeft = keyframes`
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-`;
-
-const swipeRight = keyframes`
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-`;
-
-const FeedbackContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh; /* Full viewport height to center vertically */
-  background-color: #f9f9f9;
-  text-align: center;
-
-  @media (max-width: 768px) {
-    height: auto;
-    padding: 20px;
-  }
-`;
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-`;
-
-const Title = styled.h1`
-  font-size: 2rem;
-  color: #031b30;
-  margin-bottom: 40px;
-`;
-
-const TestimonialsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Centering the container horizontally */
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-`;
-
-const TestimonialWrapper = styled.div`
-  display: flex;
-  transition: transform 0.3s ease-in-out;
-  ${({ direction }) => css`
-    ${direction === 'next' && css`
-      animation: ${swipeLeft} 0.3s forwards;
-    `}
-    ${direction === 'prev' && css`
-      animation: ${swipeRight} 0.3s forwards;
-    `}
-  `}
-`;
-
-const TestimonialCard = styled.div`
-  background-color: #F3F3F3;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 0 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 200px; /* Fixed height for all cards */
-
-  @media (max-width: 768px) {
-    width: 80%;
-    height: auto; /* Adjust height for mobile */
-  }
-`;
-
-const UserInfo = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-`;
-
-const UserImageStyled = styled.img`
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  margin-right: 10px;
-`;
-
-const UserName = styled.h2`
-  font-size: 1.2rem;
-  margin: 0;
-`;
-
-const UserRating = styled.div`
-  color: #FF0069;
-  margin-left: auto;
-`;
-
-const UserDescription = styled.p`
-  font-size: 1rem;
-  color: #666;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-`;
-
-const Arrow = styled.div`
-  font-size: 2rem;
-  color: #031b30;
-  cursor: pointer;
-  user-select: none;
-  margin: 0 10px;
-`;

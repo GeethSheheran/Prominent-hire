@@ -80,18 +80,20 @@ const FullWidthTextArea = styled(TextArea)`
 `;
 
 const Button = styled.button`
-  grid-column: span 2;
+ grid-column: span 2;
   padding: 10px;
   font-size: 16px;
-  color: #fff;
-  background-color: #FF0069;
-  border: none;
+  color: #031B30;
+  background-color: #fff;
+  border: 1px solid #031B30;
   border-radius: 15px;
   cursor: pointer;
   margin-top: 20px;
 
   &:hover {
-    background-color: #e6b800;
+    background-color: #FF0069;
+  border: 1px solid #FF0069;
+    color:white;
   }
 
   @media (max-width: 768px) {
