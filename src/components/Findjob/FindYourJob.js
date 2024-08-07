@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import emailjs from 'emailjs-com';
 
 const FormContainer = styled.div`
   display: flex;
@@ -90,8 +89,8 @@ const Button = styled.button`
 
   &:hover {
     background-color: #FF0069;
-  border: 1px solid #FF0069;
-    color:white;
+    border: 1px solid #FF0069;
+    color: white;
   }
 
   @media (max-width: 768px) {
@@ -124,61 +123,28 @@ const FileInputLabel = styled.label`
 `;
 
 const Findyourjob = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    industry: '',
-    objectives: ''
-  });
+  const [result, setResult] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    const formData = new FormData(event.target);
 
-    const { firstName, lastName, email, phone, industry, objectives } = formData;
+    formData.append("access_key", "e13da831-05aa-4e60-bad0-b710d982b7c6"); // replace with your Web3Forms access key
 
-    if (!firstName || !lastName || !email || !phone || !industry || !objectives) {
-      alert('All fields are required.');
-      return;
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    }).then((res) => res.json());
+
+    if (res.success) {
+      console.log("Success", res);
+      setResult(res.message);
+    } else {
+      console.log("Error", res);
+      setResult(res.message);
     }
-
-    emailjs.send(
-      'service_5cgbnl5', // replace with your EmailJS service ID
-      'template_u77csbb', // replace with your EmailJS template ID
-      {
-        to_name: 'Job Coordinator', // Replace with the actual recipient name if needed
-        from_name: `${formData.firstName} ${formData.lastName}`,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone,
-        industry: formData.industry,
-        objectives: formData.objectives
-      },
-      'Kniwrt7R204tb9yHV' // replace with your EmailJS user ID
-    ).then((result) => {
-      alert('Message sent successfully!');
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        industry: '',
-        objectives: ''
-      });
-    }).catch((error) => {
-      console.error('EmailJS Error:', error);
-      alert('An error occurred, please try again.');
-    });
   };
 
   return (
@@ -186,16 +152,17 @@ const Findyourjob = () => {
       <Title>Find Your Job</Title>
       <Description>Please fill out the form below to get started on your job search journey. Our team will review your information and get in touch with you soon.</Description>
       <Form onSubmit={handleSubmit}>
-        <Input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} />
-        <Input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} />
-        <Input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
-        <Input type="tel" name="phone" placeholder="Phone" value={formData.phone} onChange={handleChange} />
-        <Input type="text" name="industry" placeholder="Interested Industry" value={formData.industry} onChange={handleChange} />
+        <Input type="text" name="firstName" placeholder="First Name" required />
+        <Input type="text" name="lastName" placeholder="Last Name" required />
+        <Input type="email" name="email" placeholder="Email" required />
+        <Input type="tel" name="phone" placeholder="Phone" required />
+        <Input type="text" name="industry" placeholder="Interested Industry" required />
         <FileInputLabel htmlFor="resume-upload">Upload Your Resume</FileInputLabel>
-        <FileInput type="file" id="resume-upload" name="resume" onChange={handleChange} />
-        <TextArea name="objectives" placeholder="Your Objectives" value={formData.objectives} onChange={handleChange} />
+        <FileInput type="file" id="resume-upload" name="attachment" required />
+        <TextArea name="objectives" placeholder="Your Objectives" required />
         <Button type="submit">Submit</Button>
       </Form>
+      <span>{result}</span>
     </FormContainer>
   );
 };

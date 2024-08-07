@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import emailjs from 'emailjs-com';
+import axios from 'axios';
 
 const ContactForm = () => {
-  useEffect(() => {
-    // Initialize EmailJS with your user ID
-    emailjs.init('Kniwrt7R204tb9yHV'); // replace with your EmailJS user ID
-  }, []);
-
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -25,7 +20,7 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const { firstName, lastName, email, tpNumber, message } = formData;
@@ -37,19 +32,16 @@ const ContactForm = () => {
 
     setError('');
 
-    const templateParams = {
+    const payload = {
+      access_key: 'e13da831-05aa-4e60-bad0-b710d982b7c6', // replace with your Web3Forms access key
+      subject: `${firstName} ${lastName}`,
       from_name: `${firstName} ${lastName}`,
       from_email: email,
-      to_name: 'gs.sheheran@gmail.com',
-      subject: `${firstName} ${lastName}`,
-      message_html: `${message}\n\nTP Number: ${tpNumber}`
+      message: `${message}\n\nTP Number: ${tpNumber}`
     };
 
-    emailjs.send(
-      'service_5cgbnl5', // replace with your EmailJS service ID
-      'template_0lggbp6', // replace with your EmailJS template ID
-      templateParams
-    ).then((result) => {
+    try {
+      await axios.post('https://api.web3forms.com/submit', payload);
       alert('Message sent successfully!');
       setFormData({
         firstName: '',
@@ -58,9 +50,9 @@ const ContactForm = () => {
         tpNumber: '',
         message: ''
       });
-    }, (error) => {
+    } catch (error) {
       alert('An error occurred, please try again.');
-    });
+    }
   };
 
   return (
@@ -107,7 +99,7 @@ const ContactForm = () => {
       </FormSection>
       <InfoSection>
         <ContactInfo>
-          <Title>Connect us</Title>
+          <Title>Connect with us</Title>
           <InfoItem>
             <InfoTitle>Address</InfoTitle>
             <InfoText>Prominent Hire, State Name, Country</InfoText>
