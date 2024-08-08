@@ -37,6 +37,7 @@ const ContactForm = () => {
       subject: `${firstName} ${lastName}`,
       from_name: `${firstName} ${lastName}`,
       from_email: email,
+      cc_email: email, // Added cc_email field
       message: `${message}\n\nTP Number: ${tpNumber}`
     };
 
