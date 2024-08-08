@@ -1,6 +1,5 @@
-// HireTalent.js
-
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
 const FormContainer = styled.div`
@@ -25,7 +24,8 @@ const Title = styled.h1`
 const Description = styled.p`
   text-align: center;
   width: 40vw;
-  
+  margin: 40px;
+
   @media (max-width: 768px) {
     width: 80%;
   }
@@ -58,21 +58,19 @@ const Input = styled.input`
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 15px;
   box-sizing: border-box;
 `;
 
 const TextArea = styled.textarea`
+  grid-column: span 2;
   width: 100%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 15px;
+  height: 100px;
   box-sizing: border-box;
-`;
-
-const FullWidthTextArea = styled(TextArea)`
-  grid-column: span 2;
 
   @media (max-width: 768px) {
     grid-column: span 1;
@@ -80,7 +78,7 @@ const FullWidthTextArea = styled(TextArea)`
 `;
 
 const Button = styled.button`
- grid-column: span 2;
+  grid-column: span 2;
   padding: 10px;
   font-size: 16px;
   color: #031B30;
@@ -92,17 +90,13 @@ const Button = styled.button`
 
   &:hover {
     background-color: #FF0069;
-  border: 1px solid #FF0069;
-    color:white;
+    border: 1px solid #FF0069;
+    color: white;
   }
 
   @media (max-width: 768px) {
     grid-column: span 1;
   }
-`;
-
-const FileInput = styled.input`
-  display: none;
 `;
 
 const FileInputLabel = styled.label`
@@ -126,47 +120,72 @@ const FileInputLabel = styled.label`
 `;
 
 const HireTalent = () => {
-  const [formData, setFormData] = useState({
-    companyName: '',
-    contactPerson: '',
-    email: '',
-    phone: '',
-    jobTitle: '',
-    documents: null,
-    jobDescription: '',
-    candidateRequirements: ''
-  });
+  const { register, handleSubmit } = useForm();
+  const [result, setResult] = React.useState("");
 
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: files ? files[0] : value
-    }));
-  };
+  const onSubmit = async (data) => {
+    console.log(data);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-    // Add form submission logic here (e.g., send to API)
+    setResult("Sending....");
+
+    // Upload file to file.io
+    const file = data.resume[0];
+    const fileData = new FormData();
+    fileData.append("file", file);
+
+    const fileUploadResponse = await fetch("https://file.io", {
+      method: "POST",
+      body: fileData,
+    }).then((res) => res.json());
+
+    if (!fileUploadResponse.success) {
+      setResult("Failed to upload file");
+      return;
+    }
+
+    // Add file URL to form data
+    const formData = new FormData();
+    formData.append("access_key", "e13da831-05aa-4e60-bad0-b710d982b7c6");
+    formData.append("firstName", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("email", data.email);
+    formData.append("phone", data.phone);
+    formData.append("industry", data.industry);
+    formData.append("resume", fileUploadResponse.link);
+    formData.append("objectives", data.objectives);
+    formData.append("jobDescription", data.jobDescription);
+    formData.append("candidateRequirements", data.candidateRequirements);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    }).then((res) => res.json());
+
+    if (res.success) {
+      console.log("Success", res);
+      setResult(res.message);
+    } else {
+      console.log("Error", res);
+      setResult(res.message);
+    }
   };
 
   return (
     <FormContainer>
       <Title>Hire Talent</Title>
-      <Description>Please fill out the form below to find the perfect candidates for your organization. Our team will review your requirements and get in touch with you soon.</Description>
-      <Form onSubmit={handleSubmit}>
-        <Input type="text" name="companyName" placeholder="Company Name" value={formData.companyName} onChange={handleChange} />
-        <Input type="text" name="contactPerson" placeholder="Contact Person" value={formData.contactPerson} onChange={handleChange} />
-        <Input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
-        <Input type="tel" name="phone" placeholder="Phone" value={formData.phone} onChange={handleChange} />
-        <Input type="text" name="jobTitle" placeholder="Job Title" value={formData.jobTitle} onChange={handleChange} />
-        <FileInputLabel htmlFor="documents-upload">Upload Relevant Documents (if any)</FileInputLabel>
-        <FileInput type="file" id="documents-upload" name="documents" onChange={handleChange} />
-        <FullWidthTextArea name="jobDescription" placeholder="Job Description" value={formData.jobDescription} onChange={handleChange} />
-        <FullWidthTextArea name="candidateRequirements" placeholder="Candidate Requirements" value={formData.candidateRequirements} onChange={handleChange} />
+      <Description>Please fill out the form below to get started on your talent search journey. Our team will review your information and get in touch with you soon.</Description>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Input type="text" name="firstName" placeholder="First Name" {...register("firstName")} required />
+        <Input type="text" name="lastName" placeholder="Last Name" {...register("lastName")} required />
+        <Input type="email" name="email" placeholder="Email" {...register("email")} required />
+        <Input type="tel" name="phone" placeholder="Phone" {...register("phone")} required />
+        <Input type="text" name="industry" placeholder="Interested Industry" {...register("industry")} required />
+        <Input type="file" id="resume-upload" name="resume" {...register("resume")} required />
+        <TextArea name="jobDescription" placeholder="Job Description" {...register("jobDescription")} required />
+        <TextArea name="candidateRequirements" placeholder="Candidate Requirements" {...register("candidateRequirements")} required />
         <Button type="submit">Submit</Button>
       </Form>
+      <span>{result}</span>
     </FormContainer>
   );
 };

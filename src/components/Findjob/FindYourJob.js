@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
 const FormContainer = styled.div`
@@ -98,10 +99,6 @@ const Button = styled.button`
   }
 `;
 
-const FileInput = styled.input`
-  display: none;
-`;
-
 const FileInputLabel = styled.label`
   display: flex;
   align-items: center;
@@ -123,19 +120,43 @@ const FileInputLabel = styled.label`
 `;
 
 const Findyourjob = () => {
-  const [result, setResult] = useState("");
+  const { register, handleSubmit } = useForm();
+  const [result, setResult] = React.useState("");
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const onSubmit = async (data) => {
+    console.log(data);
+
     setResult("Sending....");
 
-    const formData = new FormData(event.target);
+    // Upload file to file.io
+    const file = data.resume[0];
+    const fileData = new FormData();
+    fileData.append("file", file);
 
-    formData.append("access_key", "e13da831-05aa-4e60-bad0-b710d982b7c6"); // replace with your Web3Forms access key
+    const fileUploadResponse = await fetch("https://file.io", {
+      method: "POST",
+      body: fileData,
+    }).then((res) => res.json());
+
+    if (!fileUploadResponse.success) {
+      setResult("Failed to upload file");
+      return;
+    }
+
+    // Add file URL to form data
+    const formData = new FormData();
+    formData.append("access_key", "e13da831-05aa-4e60-bad0-b710d982b7c6");
+    formData.append("firstName", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("email", data.email);
+    formData.append("phone", data.phone);
+    formData.append("industry", data.industry);
+    formData.append("resume", fileUploadResponse.link);
+    formData.append("objectives", data.objectives);
 
     const res = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
-      body: formData
+      body: formData,
     }).then((res) => res.json());
 
     if (res.success) {
@@ -151,15 +172,14 @@ const Findyourjob = () => {
     <FormContainer>
       <Title>Find Your Job</Title>
       <Description>Please fill out the form below to get started on your job search journey. Our team will review your information and get in touch with you soon.</Description>
-      <Form onSubmit={handleSubmit}>
-        <Input type="text" name="firstName" placeholder="First Name" required />
-        <Input type="text" name="lastName" placeholder="Last Name" required />
-        <Input type="email" name="email" placeholder="Email" required />
-        <Input type="tel" name="phone" placeholder="Phone" required />
-        <Input type="text" name="industry" placeholder="Interested Industry" required />
-        <FileInputLabel htmlFor="resume-upload">Upload Your Resume</FileInputLabel>
-        <FileInput type="file" id="resume-upload" name="attachment" required />
-        <TextArea name="objectives" placeholder="Your Objectives" required />
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Input type="text" name="firstName" placeholder="First Name" {...register("firstName")} required />
+        <Input type="text" name="lastName" placeholder="Last Name" {...register("lastName")} required />
+        <Input type="email" name="email" placeholder="Email" {...register("email")} required />
+        <Input type="tel" name="phone" placeholder="Phone" {...register("phone")} required />
+        <Input type="text" name="industry" placeholder="Interested Industry" {...register("industry")} required />
+        <Input type="file" id="resume-upload" name="resume" {...register("resume")} required />
+        <TextArea name="objectives" placeholder="Your Objectives" {...register("objectives")} required />
         <Button type="submit">Submit</Button>
       </Form>
       <span>{result}</span>
