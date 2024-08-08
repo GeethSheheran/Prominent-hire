@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -12,12 +12,30 @@ const ContactForm = () => {
   });
 
   const [error, setError] = useState('');
+  const [alert, setAlert] = useState({ show: false, message: '', variant: '' });
+
+  useEffect(() => {
+    if (alert.show) {
+      const timer = setTimeout(() => {
+        setAlert({ ...alert, show: false });
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [alert]);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const validatePhoneNumber = (tpNumber) => {
+    return /^\d{10}$/.test(tpNumber);
   };
 
   const handleSubmit = async (e) => {
@@ -30,6 +48,16 @@ const ContactForm = () => {
       return;
     }
 
+    if (!validateEmail(email)) {
+      setError('Invalid email address.');
+      return;
+    }
+
+    if (!validatePhoneNumber(tpNumber)) {
+      setError('Invalid phone number. It should contain 10 digits.');
+      return;
+    }
+
     setError('');
 
     const payload = {
@@ -37,13 +65,12 @@ const ContactForm = () => {
       subject: `${firstName} ${lastName}`,
       from_name: `${firstName} ${lastName}`,
       from_email: email,
-      cc_email: email, // Added cc_email field
       message: `${message}\n\nTP Number: ${tpNumber}`
     };
 
     try {
       await axios.post('https://api.web3forms.com/submit', payload);
-      alert('Message sent successfully!');
+      setAlert({ show: true, message: 'Message sent successfully!', variant: 'success' });
       setFormData({
         firstName: '',
         lastName: '',
@@ -52,12 +79,22 @@ const ContactForm = () => {
         message: ''
       });
     } catch (error) {
-      alert('An error occurred, please try again.');
+      setAlert({ show: true, message: 'An error occurred, please try again.', variant: 'danger' });
     }
   };
 
   return (
     <FormContainer>
+      {alert.show && (
+        <ModalBackground>
+          <Modal variant={alert.variant}>
+            <ModalContent>
+              <ModalTitle>{alert.variant === 'success' ? 'Success' : 'Error'}</ModalTitle>
+              <p>{alert.message}</p>
+            </ModalContent>
+          </Modal>
+        </ModalBackground>
+      )}
       <FormSection>
         <Form onSubmit={handleSubmit}>
           <Input
@@ -103,15 +140,23 @@ const ContactForm = () => {
           <Title>Connect with us</Title>
           <InfoItem>
             <InfoTitle>Address</InfoTitle>
-            <InfoText>Prominent Hire, State Name, Country</InfoText>
+            <InfoText>
+              <a href="https://www.google.com/maps/search/?api=1&query=Prominent+Hire,+Minneapolis,+MN" target="_blank" rel="noopener noreferrer">
+                Prominent Hire, Minneapolis, MN
+              </a>
+            </InfoText>
           </InfoItem>
           <InfoItem>
             <InfoTitle>Phone</InfoTitle>
-            <InfoText>+123 456 7890<br />+123 654 8709</InfoText>
+            <InfoText>
+              <a href="tel:+16125586221">+(612) 558 6221</a>
+            </InfoText>
           </InfoItem>
           <InfoItem>
             <InfoTitle>Email</InfoTitle>
-            <InfoText>prominenthire@mail.com</InfoText>
+            <InfoText>
+              <a href="mailto:contact@prominenthire.com">contact@prominenthire.com</a>
+            </InfoText>
           </InfoItem>
           <InfoItem>
             <InfoTitle>Business Hours</InfoTitle>
@@ -248,6 +293,15 @@ const InfoTitle = styled.h3`
 const InfoText = styled.p`
   font-size: 0.9rem;
   margin: 0;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 const SocialIcons = styled.div`
@@ -273,4 +327,39 @@ const SocialIcon = styled.a`
 const ErrorText = styled.p`
   color: red;
   margin-bottom: 20px;
+`;
+
+const ModalBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+const Modal = styled.div`
+  background-color: ${props => (props.variant === 'success' ? '#d4edda' : '#f8d7da')};
+  color: ${props => (props.variant === 'success' ? '#155724' : '#721c24')};
+  border-radius: 5px;
+  width: 80%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+`;
+
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+`;
+
+const ModalTitle = styled.h4`
+  margin-bottom: 10px;
+  color: inherit;
 `;

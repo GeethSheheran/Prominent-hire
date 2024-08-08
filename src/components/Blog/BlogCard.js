@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const BlogCard = ({ title, id }) => {
   return (
-    <StyledLink to={`/blogtitles/${id}`}>
+    <StyledLink >
       <CardContainer>
         <FolderIcon />
         <CardTitle>{title}</CardTitle>

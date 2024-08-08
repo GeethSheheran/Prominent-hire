@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import VideoPlaceholder from './video.png'; 
+import { Link } from 'react-router-dom';
+import VideoPlaceholder from './video.png';
 
 const Careers = () => {
   return (
@@ -8,12 +9,14 @@ const Careers = () => {
       <TextContainer>
         <Title>We Are with You, Every Step of the Way</Title>
         <Description>
-          At Prominent Hire, we understand that finding the right career opportunity or the perfect candidate can be daunting. 
-          That’s why we are committed to being your trusted partner throughout the journey. With a focus on integrity and personalized service, 
-          we ensure transparency and reliability in every interaction. Whether you’re a talented professional seeking your next challenge or a 
+          At Prominent Hire, we understand that finding the right career opportunity or the perfect candidate can be daunting.
+          That’s why we are committed to being your trusted partner throughout the journey. With a focus on integrity and personalized service,
+          we ensure transparency and reliability in every interaction. Whether you’re a talented professional seeking your next challenge or a
           company searching for top-tier talent, rest assured—we’re here to support you with expertise, empathy, and a dedication to your success.
         </Description>
-        <Button>Explore Careers</Button>
+        <StyledLink to="/find-job">
+          <Button>Explore Careers</Button>
+        </StyledLink>
       </TextContainer>
       <ImageContainer>
         <Image src={VideoPlaceholder} alt="Video placeholder" />
@@ -52,7 +55,7 @@ const TextContainer = styled.div`
 const Title = styled.h1`
   font-size: 2rem;
   margin-bottom: 20px;
-  
+
   @media (max-width: 1024px) {
     padding: 0 10px;
     font-size: 1.5rem;
@@ -65,12 +68,16 @@ const Description = styled.p`
   font-size: 1rem;
   margin-bottom: 30px;
   line-height: 1.5;
-  
+
   @media (max-width: 1024px) {
     font-size: 1rem;
     margin: 0 10px;
     margin-bottom: 20px;
   }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
 
 const Button = styled.button`

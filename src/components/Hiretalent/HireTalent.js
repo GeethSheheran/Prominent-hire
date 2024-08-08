@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
@@ -99,34 +99,74 @@ const Button = styled.button`
   }
 `;
 
-const FileInputLabel = styled.label`
+const ModalBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 10px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #b0b0b0;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  width: 100%;
-  text-align: center;
-  box-sizing: border-box;
+  align-items: center;
+  z-index: 1000;
+`;
 
-  &:hover {
-    background-color: #a0a0a0;
-  }
+const Modal = styled.div`
+  background-color: ${props => (props.variant === 'success' ? '#d4edda' : '#f8d7da')};
+  color: ${props => (props.variant === 'success' ? '#155724' : '#721c24')};
+  border-radius: 5px;
+  width: 80%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+`;
+
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+`;
+
+const ModalTitle = styled.h4`
+  margin-bottom: 10px;
+  color: inherit;
 `;
 
 const HireTalent = () => {
   const { register, handleSubmit } = useForm();
-  const [result, setResult] = React.useState("");
+  const [alert, setAlert] = useState({ show: false, message: '', variant: '' });
+
+  useEffect(() => {
+    if (alert.show) {
+      const timer = setTimeout(() => {
+        setAlert({ ...alert, show: false });
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [alert]);
+
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const validatePhoneNumber = (phone) => {
+    return /^\d{10}$/.test(phone);
+  };
 
   const onSubmit = async (data) => {
-    console.log(data);
+    if (!validateEmail(data.email)) {
+      setAlert({ show: true, message: 'Invalid email address.', variant: 'danger' });
+      return;
+    }
 
-    setResult("Sending....");
+    if (!validatePhoneNumber(data.phone)) {
+      setAlert({ show: true, message: 'Invalid phone number. It should contain 10 digits.', variant: 'danger' });
+      return;
+    }
+
+    setAlert({ show: true, message: 'Sending....', variant: 'info' });
 
     // Upload file to file.io
     const file = data.resume[0];
@@ -139,7 +179,7 @@ const HireTalent = () => {
     }).then((res) => res.json());
 
     if (!fileUploadResponse.success) {
-      setResult("Failed to upload file");
+      setAlert({ show: true, message: 'Failed to upload file', variant: 'danger' });
       return;
     }
 
@@ -163,15 +203,25 @@ const HireTalent = () => {
 
     if (res.success) {
       console.log("Success", res);
-      setResult(res.message);
+      setAlert({ show: true, message: 'Message sent successfully!', variant: 'success' });
     } else {
       console.log("Error", res);
-      setResult(res.message);
+      setAlert({ show: true, message: res.message, variant: 'danger' });
     }
   };
 
   return (
     <FormContainer>
+      {alert.show && (
+        <ModalBackground>
+          <Modal variant={alert.variant}>
+            <ModalContent>
+              <ModalTitle>{alert.variant === 'success' ? 'Success' : 'Error'}</ModalTitle>
+              <p>{alert.message}</p>
+            </ModalContent>
+          </Modal>
+        </ModalBackground>
+      )}
       <Title>Hire Talent</Title>
       <Description>Please fill out the form below to get started on your talent search journey. Our team will review your information and get in touch with you soon.</Description>
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -185,7 +235,6 @@ const HireTalent = () => {
         <TextArea name="candidateRequirements" placeholder="Candidate Requirements" {...register("candidateRequirements")} required />
         <Button type="submit">Submit</Button>
       </Form>
-      <span>{result}</span>
     </FormContainer>
   );
 };

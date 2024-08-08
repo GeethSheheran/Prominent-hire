@@ -1,105 +1,98 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const About = () => {
+const Touch = () => {
   return (
-    <AboutContainer>
-      {/* <SectionTitle>ABOUT</SectionTitle>
-      <Title>Who We Are</Title>
-      <DescriptionContainer>
-        <Description>
-          We are a dedicated recruiting agency passionate about connecting exceptional talent with outstanding companies. Our mission is to bridge the gap between ambitious professionals and leading businesses, fostering mutual growth and success.
-        </Description>
-      </DescriptionContainer>
-      <Button>Explore About Us</Button>
-      <Image src={AboutImage} alt="About Us" /> */}
-      <ExtraTextContainer>
-        <ExtraText>
-        We are committed to providing personalized service and exceptional support. We look forward to hearing from you and assisting you with finding your next career opportunity.
-        </ExtraText>
-      </ExtraTextContainer>
-    </AboutContainer>
+    <TouchContainer>
+      <Content>
+        <Title>Get in Touch</Title>
+        <Description>Discover how we can help you achieve your career goals or find the perfect talent for your team. Contact us today to get started.</Description>
+        <StyledLink to="/contact">
+          <Button>See more</Button>
+        </StyledLink>
+      </Content>
+    </TouchContainer>
   );
 };
 
-export default About;
+export default Touch;
 
-const AboutContainer = styled.div`
+const TouchContainer = styled.div`
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  margin-top:10vh;
-`;
+  justify-content: center;
+  height: 40vh;
+  background-image: url('/touch.jpeg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  overflow: hidden;
 
-const SectionTitle = styled.h3`
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 10px;
-  letter-spacing: 2px;
-`;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(3, 27, 48, 0.7); /* Semi-transparent overlay */
+    z-index: 1;
+  }
 
-const Title = styled.h1`
-  font-size: 2rem;
-  color: #031b30;
-  margin-bottom: 20px;
-`;
-
-const DescriptionContainer = styled.div`
-   padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 30px;
-`;
-
-const Description = styled.p`
-  font-size: 16px;
-  color: #031b30;
-  max-width: 650px;
-  margin-bottom: 0;
-  line-height: 1.5;
-`;
-
-const Button = styled.button`
-  background-color: transparent;
-  color: #031b30;
-  border: 2px solid #031b30;
-  border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-bottom: 30px;
-
-  &:hover {
-    background-color: #FF0069;
-    color: white;
-    border: 2px solid #FF0069;
+  @media (max-width: 1020px) {
+    height: auto;
+    padding: 20px;
   }
 `;
 
-const Image = styled.img`
-  max-width: 100vw;
-  height: auto;
-//   border-radius: 10px;
-`;
-
-const ExtraTextContainer = styled.div`
-  width: 100vw;
-  background-color: #000;
-  display: flex;
-  justify-content: center;
-  padding-top:80px;
-  padding-bottom:80px;
-`;
-
-const ExtraText = styled.p`
-  font-size: 16px;
+const Content = styled.div`
+  position: relative;
+  z-index: 2;
+  text-align: center;
   color: #fff;
   max-width: 800px;
-  line-height: 1.5;
-  text-align: center;
-  padding: 0px;
-  @media (max-width: 768px){
-  font-size: 1rem;
-  margin:0 50px;
+`;
+
+const Title = styled.h1`
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+
+  @media (max-width: 1020px) {
+    font-size: 2rem;
+  }
+`;
+
+const Description = styled.p`
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+
+  @media (max-width: 1020px) {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+const Button = styled.button`
+  background-color: transparent; /* Transparent by default */
+  color: white;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+
+  &:hover {
+    background-color: #FF0069;
+    border-color: #FF0069;
+  }
+
+  @media (max-width: 1020px) {
+    font-size: 0.9rem;
   }
 `;

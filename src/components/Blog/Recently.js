@@ -7,7 +7,7 @@ const Recently = () => {
     <Container>
       <Title>Recent Articles</Title>
       <Card>
-        <Link to="/navigating-career-changes">
+        <Link >
           <CardContent>
             <Image src="/soon.png" alt="Navigating Career Changes" />
             <TextContent>
@@ -20,7 +20,7 @@ const Recently = () => {
         </Link>
       </Card>
       <Card>
-        <Link to="/future-of-remote-work">
+        <Link >
           <CardContent>
             <Image src="/soon.png" alt="The Future of Remote Work" />
             <TextContent>
@@ -33,7 +33,7 @@ const Recently = () => {
         </Link>
       </Card>
       <Card>
-        <Link to="/virtual-interviews-tips">
+        <Link >
           <CardContent>
             <Image src="/soon.png" alt="Virtual Interviews Tips" />
             <TextContent>
@@ -46,7 +46,7 @@ const Recently = () => {
         </Link>
       </Card>
       <Card>
-        <Link to="/employer-brand-strategies">
+        <Link >
           <CardContent>
             <Image src="/soon.png" alt="Employer Brand Strategies" />
             <TextContent>

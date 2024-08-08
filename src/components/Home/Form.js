@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Form = () => {
   const industries = [
@@ -24,7 +25,9 @@ const Form = () => {
           <CardIcon>$</CardIcon>
           <CardTitle>{industry.title}</CardTitle>
           <CardDescription>{industry.description}</CardDescription>
-          <ReadMoreButton>Read More</ReadMoreButton>
+          <StyledLink to="/services">
+            <ReadMoreButton>Read More</ReadMoreButton>
+          </StyledLink>
         </Card>
       ))}
     </IndustryContainer>
@@ -86,6 +89,10 @@ const CardTitle = styled.h3`
 const CardDescription = styled.p`
   font-size: 1rem;
   color: #666;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
 
 const ReadMoreButton = styled.button`

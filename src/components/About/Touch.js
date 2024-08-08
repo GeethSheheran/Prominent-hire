@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Touch = () => {
   return (
@@ -7,7 +8,9 @@ const Touch = () => {
       <Content>
         <Title>Get in Touch</Title>
         <Description>Discover how we can help you achieve your career goals or find the perfect talent for your team. Contact us today to get started.</Description>
-        <Button>See more</Button>
+        <StyledLink to="/contact">
+          <Button>See more</Button>
+        </StyledLink>
       </Content>
     </TouchContainer>
   );
@@ -69,6 +72,10 @@ const Description = styled.p`
     font-size: 1rem;
     margin-bottom: 20px;
   }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
 
 const Button = styled.button`

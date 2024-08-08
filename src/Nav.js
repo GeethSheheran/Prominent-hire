@@ -19,9 +19,11 @@ const Nav = () => {
   return (
     <Navbar>
       <LeftSection>
-        <Logo>
-          <LogoImage src={LogoImageSrc} alt="Logo" />
-        </Logo>
+        <LogoLink to="/" onClick={closeMenu}>
+          <Logo>
+            <LogoImage src={LogoImageSrc} alt="Logo" />
+          </Logo>
+        </LogoLink>
         <NavMenu isOpen={isOpen}>
           <CloseButton onClick={closeMenu}><FaTimes /></CloseButton>
           <NavItem>
@@ -89,7 +91,14 @@ const Navbar = styled.nav`
 const LeftSection = styled.div`
   display: flex;
   align-items: center;
-  width:60%
+  width: 60%;
+`;
+
+const LogoLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  margin-left: 5%; /* Percentage-based margin */
+  text-decoration: none;
 `;
 
 const Logo = styled.div`
@@ -97,7 +106,6 @@ const Logo = styled.div`
   align-items: center;
   font-size: 1.5rem;
   color: white;
-  margin-left: 5%; /* Percentage-based margin */
 `;
 
 const LogoImage = styled.img`
@@ -115,8 +123,8 @@ const NavMenu = styled.ul`
     left: 0;
     width: 100vw;
     height: 100vh;
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
     background-color: #031B30;
     flex-direction: column;
     align-items: center;
@@ -151,7 +159,6 @@ const NavButtonsDesktop = styled.div`
   display: flex;
   align-items: center;
   margin-right: 12%; /* Percentage-based margin */
-
 
   @media (max-width: 1124px) {
     display: none;

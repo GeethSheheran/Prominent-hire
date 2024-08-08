@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import AboutImage from './about.png'; // Ensure this path is correct
 
 const About = () => {
@@ -12,7 +13,9 @@ const About = () => {
           We are a dedicated recruiting agency passionate about connecting exceptional talent with outstanding companies. Our mission is to bridge the gap between ambitious professionals and leading businesses, fostering mutual growth and success.
         </Description>
       </DescriptionContainer>
-      <Button>Explore About Us</Button>
+      <StyledLink to="/about">
+        <Button>Explore About Us</Button>
+      </StyledLink>
       <Image src={AboutImage} alt="About Us" />
       <ExtraTextContainer>
         <ExtraText>
@@ -67,6 +70,11 @@ const Description = styled.p`
   }
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  margin-bottom: 30px;
+`;
+
 const Button = styled.button`
   background-color: transparent;
   color: #031b30;
@@ -75,7 +83,6 @@ const Button = styled.button`
   padding: 10px 20px;
   font-size: 1rem;
   cursor: pointer;
-  margin-bottom: 30px;
 
   &:hover {
     background-color: #FF0069;

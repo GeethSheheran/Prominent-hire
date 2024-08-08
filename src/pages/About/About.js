@@ -19,7 +19,7 @@ const About = () => {
       <Vision/>
       <Points />
       <Work/>
-      <Team/>
+      {/* <Team/> */}
       <Touch/>
       <Service/>
       <Form/>
