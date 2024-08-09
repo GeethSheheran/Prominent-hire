@@ -147,66 +147,60 @@ const HireTalent = () => {
     }
   }, [alert]);
 
-  const validateEmail = (email) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
-
-  const validatePhoneNumber = (phone) => {
-    return /^\d{10}$/.test(phone);
-  };
-
   const onSubmit = async (data) => {
-    if (!validateEmail(data.email)) {
-      setAlert({ show: true, message: 'Invalid email address.', variant: 'danger' });
-      return;
-    }
+    try {
+      // Upload file to file.io
+      const file = data.resume[0];
+      const fileData = new FormData();
+      fileData.append("file", file);
 
-    if (!validatePhoneNumber(data.phone)) {
-      setAlert({ show: true, message: 'Invalid phone number. It should contain 10 digits.', variant: 'danger' });
-      return;
-    }
+      const fileUploadResponse = await fetch("https://file.io", {
+        method: "POST",
+        body: fileData,
+      });
 
-    setAlert({ show: true, message: 'Sending....', variant: 'info' });
+      if (!fileUploadResponse.ok) {
+        throw new Error("Failed to upload file");
+      }
 
-    // Upload file to file.io
-    const file = data.resume[0];
-    const fileData = new FormData();
-    fileData.append("file", file);
+      const fileResult = await fileUploadResponse.json();
 
-    const fileUploadResponse = await fetch("https://file.io", {
-      method: "POST",
-      body: fileData,
-    }).then((res) => res.json());
+      if (!fileResult.success) {
+        throw new Error("File upload unsuccessful");
+      }
 
-    if (!fileUploadResponse.success) {
-      setAlert({ show: true, message: 'Failed to upload file', variant: 'danger' });
-      return;
-    }
+      // Add file URL to form data
+      const formData = new FormData();
+      formData.append("access_key", "e13da831-05aa-4e60-bad0-b710d982b7c6");
+      formData.append("firstName", data.firstName);
+      formData.append("lastName", data.lastName);
+      formData.append("email", data.email);
+      formData.append("phone", data.phone);
+      formData.append("industry", data.industry);
+      formData.append("resume", fileResult.link);
+      formData.append("objectives", data.objectives);
+      formData.append("jobDescription", data.jobDescription);
+      formData.append("candidateRequirements", data.candidateRequirements);
 
-    // Add file URL to form data
-    const formData = new FormData();
-    formData.append("access_key", "e13da831-05aa-4e60-bad0-b710d982b7c6");
-    formData.append("firstName", data.firstName);
-    formData.append("lastName", data.lastName);
-    formData.append("email", data.email);
-    formData.append("phone", data.phone);
-    formData.append("industry", data.industry);
-    formData.append("resume", fileUploadResponse.link);
-    formData.append("objectives", data.objectives);
-    formData.append("jobDescription", data.jobDescription);
-    formData.append("candidateRequirements", data.candidateRequirements);
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
 
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    }).then((res) => res.json());
+      if (!res.ok) {
+        throw new Error("Failed to submit form");
+      }
 
-    if (res.success) {
-      console.log("Success", res);
-      setAlert({ show: true, message: 'Message sent successfully!', variant: 'success' });
-    } else {
-      console.log("Error", res);
-      setAlert({ show: true, message: res.message, variant: 'danger' });
+      const result = await res.json();
+
+      if (result.success) {
+        setAlert({ show: true, message: 'Message sent successfully!', variant: 'success' });
+      } else {
+        throw new Error(result.message);
+      }
+    } catch (error) {
+      console.error("Error occurred:", error);
+      setAlert({ show: true, message: error.message || 'An error occurred, please try again.', variant: 'danger' });
     }
   };
 
