@@ -149,11 +149,11 @@ const HireTalent = () => {
 
   const onSubmit = async (data) => {
     try {
-      // Upload file to file.io
       const file = data.resume[0];
       const fileData = new FormData();
       fileData.append("file", file);
 
+      // Upload file to file.io
       const fileUploadResponse = await fetch("https://file.io", {
         method: "POST",
         body: fileData,
@@ -169,7 +169,7 @@ const HireTalent = () => {
         throw new Error("File upload unsuccessful");
       }
 
-      // Add file URL to form data
+      // Prepare form data
       const formData = new FormData();
       formData.append("access_key", "e13da831-05aa-4e60-bad0-b710d982b7c6");
       formData.append("firstName", data.firstName);
@@ -178,26 +178,24 @@ const HireTalent = () => {
       formData.append("phone", data.phone);
       formData.append("industry", data.industry);
       formData.append("resume", fileResult.link);
-      formData.append("objectives", data.objectives);
       formData.append("jobDescription", data.jobDescription);
       formData.append("candidateRequirements", data.candidateRequirements);
 
+      // Send form data
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData,
       });
 
-      if (!res.ok) {
-        throw new Error("Failed to submit form");
-      }
-
       const result = await res.json();
 
-      if (result.success) {
-        setAlert({ show: true, message: 'Message sent successfully!', variant: 'success' });
-      } else {
-        throw new Error(result.message);
+      if (!res.ok || !result.success) {
+        throw new Error(result.message || "Failed to submit form");
       }
+
+      // Success alert
+      setAlert({ show: true, message: 'Message sent successfully!', variant: 'success' });
+
     } catch (error) {
       console.error("Error occurred:", error);
       setAlert({ show: true, message: error.message || 'An error occurred, please try again.', variant: 'danger' });
