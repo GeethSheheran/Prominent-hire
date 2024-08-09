@@ -103,7 +103,8 @@ const TestimonialItemWrapper = styled.div`
   transition: transform 0.25s ease-in-out;
   padding: 20px;
   margin: 20px;
-  height: 240px;
+  height: 220px;
+  font-size:12px;
 
   &:hover {
     transform: translateY(-5px);
