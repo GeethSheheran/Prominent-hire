@@ -34,7 +34,7 @@ const HeroContent = styled.div`
   padding: 0px;
 //   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  // margin-top:-50px;
+  margin-top:50px;
   max-width: 90%;
 `;
 
@@ -51,7 +51,7 @@ const HeroDescription = styled.p`
   max-width: 70vw;
   margin-top:0px;
   @media (max-width: 768px) {
-    font-size: 12px;
+    font-size: 14px;
   max-width: 90vw;
     margin-top:0px;
   }

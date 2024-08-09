@@ -111,7 +111,7 @@ const TestimonialItemWrapper = styled.div`
   }
 
   @media (max-width: 600px) {
-    height: 270px;
+    height: 255px;
     margin: 10px;
     padding: 15px;
   }
