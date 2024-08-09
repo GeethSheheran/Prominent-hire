@@ -49,6 +49,7 @@ const HeroTitle = styled.h1`
 `;
 
 const HeroDescription = styled.p`
+  max-width: 70vw;
   font-size: 1rem;
   @media (max-width: 768px) {
     font-size: 14px;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import IndustryIcon from './icon (1).png';
 import CareerIcon from './icon (2).png';
 import SupportIcon from './icon (3).png';
@@ -11,25 +12,29 @@ const Points = () => {
       icon: IndustryIcon,
       title: 'Industry Expertise',
       description: 'Supportive advice and resources to navigate career decisions and opportunities',
-      buttonLabel: 'Get Career Advice'
+      buttonLabel: 'Get Career Advice',
+      route: '/services'
     },
     {
       icon: CareerIcon,
       title: 'Career Guidance',
       description: 'Supportive advice and resources to navigate career decisions and opportunities',
-      buttonLabel: 'Get Career Advice'
+      buttonLabel: 'Get Career Advice',
+      route: '/services'
     },
     {
       icon: SupportIcon,
       title: 'Continuous Support',
       description: 'Ongoing assistance throughout the job search and beyond, ensuring long-term success',
-      buttonLabel: 'Access Ongoing Support'
+      buttonLabel: 'Access Ongoing Support',
+      route: '/contact'
     },
     {
       icon: TechnologyIcon,
       title: 'Innovative Technology',
       description: 'Leveraging cutting-edge tools to streamline the recruitment process for both candidates and companies',
-      buttonLabel: 'Experience Technology'
+      buttonLabel: 'Experience Technology',
+      route: '/contact'
     },
   ];
 
@@ -40,7 +45,9 @@ const Points = () => {
           <Icon src={card.icon} alt={`${card.title} icon`} />
           <Title>{card.title}</Title>
           <Description>{card.description}</Description>
-          <CardButton>{card.buttonLabel}</CardButton>
+          <StyledLink to={card.route}>
+            <CardButton>{card.buttonLabel}</CardButton>
+          </StyledLink>
         </Card>
       ))}
     </CardContainer>
@@ -55,16 +62,15 @@ const CardContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   padding: 20px;
-  background-color:#000;
+  background-color: #000;
 `;
 
 const Card = styled.div`
-  background-color: #ooo;
+  // background-color: #333;
   border-radius: 10px;
   padding: 20px;
   margin: 10px;
   margin-top: 20px;
-//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 200px;
 `;
@@ -96,8 +102,12 @@ const CardButton = styled.button`
 
   &:hover {
     background-color: #FF0069;
-    color:white;
-  border: 1px solid #FF0069;
-  transition: background-color 0.3s ease, color 0.3s ease;
+    color: white;
+    border: 1px solid #FF0069;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;

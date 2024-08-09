@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import IndustryIcon from './icon (1).png';
 import CareerIcon from './icon (2).png';
 import SupportIcon from './icon (3).png';
@@ -11,25 +12,29 @@ const Points = () => {
       icon: IndustryIcon,
       title: 'Industry Expertise',
       description: 'Supportive advice and resources to navigate career decisions and opportunities',
-      buttonLabel: 'Get Career Advice'
+      buttonLabel: 'Get Career Advice',
+      route: '/services'
     },
     {
       icon: CareerIcon,
       title: 'Career Guidance',
       description: 'Supportive advice and resources to navigate career decisions and opportunities',
-      buttonLabel: 'Get Career Advice'
+      buttonLabel: 'Get Career Advice',
+      route: '/services'
     },
     {
       icon: SupportIcon,
       title: 'Continuous Support',
       description: 'Ongoing assistance throughout the job search and beyond, ensuring long-term success',
-      buttonLabel: 'Access Ongoing Support'
+      buttonLabel: 'Access Ongoing Support',
+      route: '/contact'
     },
     {
       icon: TechnologyIcon,
       title: 'Innovative Technology',
       description: 'Leveraging cutting-edge tools to streamline the recruitment process for both candidates and companies',
-      buttonLabel: 'Experience Technology'
+      buttonLabel: 'Experience Technology',
+      route: '/contact'
     },
   ];
 
@@ -40,7 +45,9 @@ const Points = () => {
           <Icon src={card.icon} alt={`${card.title} icon`} />
           <Title>{card.title}</Title>
           <Description>{card.description}</Description>
-          <CardButton>{card.buttonLabel}</CardButton>
+          <StyledLink to={card.route}>
+            <CardButton>{card.buttonLabel}</CardButton>
+          </StyledLink>
         </Card>
       ))}
     </CardContainer>
@@ -103,4 +110,11 @@ const CardButton = styled.button`
     color: white;
     border: 1px solid #FF0069;
   }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
