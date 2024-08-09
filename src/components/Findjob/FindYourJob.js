@@ -148,47 +148,57 @@ const Findyourjob = () => {
   }, [alert]);
 
   const onSubmit = async (data) => {
-    console.log(data);
+    try {
+      // Upload file to file.io
+      const file = data.resume[0];
+      const fileData = new FormData();
+      fileData.append("file", file);
 
-    setAlert({ show: true, message: 'Sending....', variant: 'info' });
+      const fileUploadResponse = await fetch("https://file.io", {
+        method: "POST",
+        body: fileData,
+      });
 
-    // Upload file to file.io
-    const file = data.resume[0];
-    const fileData = new FormData();
-    fileData.append("file", file);
+      if (!fileUploadResponse.ok) {
+        throw new Error("Failed to upload file");
+      }
 
-    const fileUploadResponse = await fetch("https://file.io", {
-      method: "POST",
-      body: fileData,
-    }).then((res) => res.json());
+      const fileResult = await fileUploadResponse.json();
 
-    if (!fileUploadResponse.success) {
-      setAlert({ show: true, message: 'Failed to upload file', variant: 'danger' });
-      return;
-    }
+      if (!fileResult.success) {
+        throw new Error("File upload unsuccessful");
+      }
 
-    // Add file URL to form data
-    const formData = new FormData();
-    formData.append("access_key", "e13da831-05aa-4e60-bad0-b710d982b7c6");
-    formData.append("firstName", data.firstName);
-    formData.append("lastName", data.lastName);
-    formData.append("email", data.email);
-    formData.append("phone", data.phone);
-    formData.append("industry", data.industry);
-    formData.append("resume", fileUploadResponse.link);
-    formData.append("objectives", data.objectives);
+      // Add file URL to form data
+      const formData = new FormData();
+      formData.append("access_key", "e13da831-05aa-4e60-bad0-b710d982b7c6");
+      formData.append("firstName", data.firstName);
+      formData.append("lastName", data.lastName);
+      formData.append("email", data.email);
+      formData.append("phone", data.phone);
+      formData.append("industry", data.industry);
+      formData.append("resume", fileResult.link);
+      formData.append("objectives", data.objectives);
 
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    }).then((res) => res.json());
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
 
-    if (res.success) {
-      console.log("Success", res);
-      setAlert({ show: true, message: 'Message sent successfully!', variant: 'success' });
-    } else {
-      console.log("Error", res);
-      setAlert({ show: true, message: res.message, variant: 'danger' });
+      if (!res.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      const result = await res.json();
+
+      if (result.success) {
+        setAlert({ show: true, message: 'Message sent successfully!', variant: 'success' });
+      } else {
+        throw new Error(result.message);
+      }
+    } catch (error) {
+      console.error("Error occurred:", error);
+      setAlert({ show: true, message: error.message || 'An error occurred, please try again.', variant: 'danger' });
     }
   };
 
