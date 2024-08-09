@@ -58,7 +58,7 @@ const Title = styled.h1`
 
   @media (max-width: 1024px) {
     padding: 0 10px;
-    font-size: 1.5rem;
+    font-size: 24px;
     line-height: 1.2;
     margin-bottom: 20px;
   }
@@ -70,9 +70,10 @@ const Description = styled.p`
   line-height: 1.5;
 
   @media (max-width: 1024px) {
-    font-size: 1rem;
-    margin: 0 10px;
+    font-size: 12px;
+    // margin: 0 10px;
     margin-bottom: 20px;
+    width:90vw;
   }
 `;
 
@@ -88,6 +89,7 @@ const Button = styled.button`
   padding: 10px 20px;
   font-size: 1rem;
   cursor: pointer;
+
 
   &:hover {
     background-color: #FF0069;

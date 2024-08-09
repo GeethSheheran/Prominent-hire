@@ -30,26 +30,29 @@ const HeroContainer = styled.div`
 `;
 
 const HeroContent = styled.div`
-  max-width: 70%;
+  max-width: 70vw;
   padding: 0px;
 //   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   // margin-top:-50px;
+  max-width: 90%;
 `;
 
 const HeroTitle = styled.h1`
   font-size: 3rem;
   @media (max-width: 768px) {
     line-height: 1;
-    font-size: 2rem;
+    font-size: 28px;
   }
 `;
 
 const HeroDescription = styled.p`
   font-size: 1rem;
+  max-width: 70vw;
   margin-top:0px;
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 12px;
+  max-width: 90vw;
     margin-top:0px;
   }
 `;

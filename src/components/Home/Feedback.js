@@ -110,7 +110,7 @@ const TestimonialItemWrapper = styled.div`
   }
 
   @media (max-width: 600px) {
-    height: 300px;
+    height: 270px;
     margin: 10px;
     padding: 15px;
   }
@@ -119,18 +119,39 @@ const TestimonialItemWrapper = styled.div`
 const TestimonialContent = styled.div`
   margin-top: 15px;
   color: #212529;
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
 `;
 
 const TopSection = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-align:left;
+  text-align: left;
 `;
 
 const AuthorInfo = styled.div`
   display: flex;
   align-items: center;
+
+  h4 {
+    margin: 0;
+    font-size: 1.25rem;
+
+    @media (max-width: 600px) {
+      font-size: 16px;
+    }
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.875rem;
+
+    @media (max-width: 600px) {
+      font-size: 12px;
+    }
+  }
 `;
 
 const AuthorImage = styled.img`
@@ -145,7 +166,7 @@ const RatingWrapper = styled.div`
   margin-bottom: 1rem;
 
   @media (max-width: 600px) {
-    width: 50%;
+    width: 40%;
   }
 
   .fa-star:not(.active) {
@@ -194,12 +215,8 @@ const TestimonialItem = ({ testimonial }) => (
           alt={testimonial.author.fullName}
         />
         <div>
-          <h4 style={{ margin: 0, fontSize: "1.25rem" }}>
-            {testimonial.author.fullName}
-          </h4>
-          <p style={{ margin: 0, fontSize: "0.875rem" }}>
-            <i>{testimonial.author.designation}</i>
-          </p>
+          <h4>{testimonial.author.fullName}</h4>
+          <p><i>{testimonial.author.designation}</i></p>
         </div>
       </AuthorInfo>
       <Rating rating={testimonial.rating} showLabel={false} />

@@ -34,6 +34,7 @@ const HeroContent = styled.div`
   padding: 0px;
 //   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+  max-width: 90%;
   // margin-top:-50px;
 `;
 
@@ -41,14 +42,14 @@ const HeroTitle = styled.h1`
   font-size: 3rem;
   @media (max-width: 768px) {
     line-height: 1;
-    font-size: 2rem;
+    font-size: 28px;
   }
 `;
 
 const HeroDescription = styled.p`
   font-size: 1rem;
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 12px;
     margin-top:0px;
   }
 `;

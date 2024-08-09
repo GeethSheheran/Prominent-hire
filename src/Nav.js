@@ -57,14 +57,14 @@ const Nav = () => {
             </StyledLink>
           </NavItem>
           <NavButtonsMobile>
-            <NavButton to="/find-job" onClick={closeMenu}>Find a Job</NavButton>
-            <NavButton1 to="/hire-talent" onClick={closeMenu}>Hire Talent</NavButton1>
+            <NavButton to="/find-job" isActive={location.pathname === '/find-job'} onClick={closeMenu}>Find a Job</NavButton>
+            <NavButton1 to="/hire-talent" isActive={location.pathname === '/hire-talent'} onClick={closeMenu}>Hire Talent</NavButton1>
           </NavButtonsMobile>
         </NavMenu>
       </LeftSection>
       <NavButtonsDesktop>
-        <NavButton to="/find-job">Find a Job</NavButton>
-        <NavButton1 to="/hire-talent">Hire Talent</NavButton1>
+        <NavButton to="/find-job" isActive={location.pathname === '/find-job'}>Find a Job</NavButton>
+        <NavButton1 to="/hire-talent" isActive={location.pathname === '/hire-talent'}>Hire Talent</NavButton1>
       </NavButtonsDesktop>
       <Hamburger onClick={toggleMenu}>
         {isOpen ? <FaTimes /> : <FaBars />}
@@ -150,9 +150,13 @@ const StyledLink = styled(Link)`
   color: ${({ isActive }) => (isActive ? '#FFD700' : 'white')};
   transition: color 0.3s ease;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  ${({ isActive }) =>
+    isActive &&
+    `
     color: #FFD700;
-  }
+  `}
 `;
 
 const NavButtonsDesktop = styled.div`
@@ -177,8 +181,8 @@ const NavButtonsMobile = styled.div`
 `;
 
 const NavButton = styled(Link)`
-  background-color: #031B30;
-  color: white;
+  background-color: ${({ isActive }) => (isActive ? '#fff' : '#031B30')};
+  color: ${({ isActive }) => (isActive ? 'black' : 'white')};
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
@@ -201,8 +205,8 @@ const NavButton = styled(Link)`
 `;
 
 const NavButton1 = styled(Link)`
-  background-color: #FFD700;
-  color: black;
+  background-color: ${({ isActive }) => (isActive ? '#FF0069' : '#FFD700')};
+  color: ${({ isActive }) => (isActive ? 'white' : 'black')};
   border: none;
   border-radius: 20px;
   padding: 12px 20px;

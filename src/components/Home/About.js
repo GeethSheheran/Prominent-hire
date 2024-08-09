@@ -65,7 +65,8 @@ const Description = styled.p`
   margin-bottom: 0;
   line-height: 1.5;
   @media (max-width: 768px){
-  font-size: 1rem;
+  font-size: 12px;
+  width:90vw;
   margin:0 10px;
   }
 `;
@@ -114,7 +115,8 @@ const ExtraText = styled.p`
   text-align: center;
   padding: 0px;
   @media (max-width: 768px){
-  font-size: 1rem;
+  font-size: 12px;
   margin:0 20px;
+  width:90vw;
   }
 `;

@@ -138,11 +138,17 @@ const TextContent = styled.div`
 const CardTitle = styled.h3`
   margin: 0 0 10px 0;
   font-size: 20px;
+  @media (max-width: 768px) {
+  font-size: 16px;
+}
 `;
 
 const Description = styled.p`
   margin: 0;
   color: #666;
+  @media (max-width: 768px) {
+  font-size: 12px;
+}
 `;
 
 export default Recently;

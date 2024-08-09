@@ -1,4 +1,3 @@
-// src/pages/Industry/Industry.js
 import React from 'react';
 import styled from 'styled-components';
 
@@ -58,12 +57,19 @@ const IndustryContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
-  // background-color: #f9f9f9;
   margin: 100px;
 
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr); 
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  margin: 20px;
+    grid-template-columns: 1fr; 
+    margin: 20px;
     justify-items: center;
   }
 `;
@@ -106,4 +112,7 @@ const CardTitle = styled.h3`
 const CardDescription = styled.p`
   font-size: 1rem;
   color: #666;
+  @media (max-width: 1024px) {
+  font-size:12px;
+}
 `;

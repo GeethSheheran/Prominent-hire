@@ -45,7 +45,7 @@ const CardContainer = styled.div`
   }
 
   @media (max-width: 1024px) {
-    width: 100%;
+    width: 92%;
   }
 `;
 
