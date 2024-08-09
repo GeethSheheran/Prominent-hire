@@ -164,6 +164,7 @@ const AuthorImage = styled.img`
 `;
 
 const RatingWrapper = styled.div`
+    width: 40%;
   margin-bottom: 1rem;
 
   @media (max-width: 600px) {
