@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import vectorIcon from './Vector.png'; // Import the image
+import vectorIcon from './Vector.png'; 
 
 const Work = () => {
   return (
     <WorkContainer>
       <IconContainer>
-        <Icon src={vectorIcon} alt="work Icon" /> {/* Use imported image */}
+        <Icon src={vectorIcon} alt="work Icon" /> 
       </IconContainer>
       <Content>
         <Title>These are the essence of our company. They define us, guide us, and influence every aspect of our work.</Title>
