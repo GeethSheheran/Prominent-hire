@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import vectorIcon from './Vector.png'; // Import the image
 
 const Work = () => {
   return (
     <WorkContainer>
       <IconContainer>
-        <Icon src="/vector.png" alt="work Icon" />
+        <Icon src={vectorIcon} alt="work Icon" /> {/* Use imported image */}
       </IconContainer>
       <Content>
         <Title>These are the essence of our company. They define us, guide us, and influence every aspect of our work.</Title>
@@ -62,7 +63,7 @@ const Icon = styled.img`
   width: 100%;
   height: auto;
   @media (max-width: 720px) {
-  width: 60%;
+    width: 60%;
   }
 `;
 
@@ -103,7 +104,7 @@ const List = styled.ul`
 
 const ListItem = styled.li`
   font-size: 1.2rem;
-  font-weight:200;
+  font-weight: 200;
   margin-bottom: 10px;
 
   @media (max-width: 1020px) {
